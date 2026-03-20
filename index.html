@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carlito Sport — Best Fitness Training Brussels</title>
+<meta name="description" content="The best fitness training in the heart of the European Quarter. Indoor & Outdoor classes. Personal training, group sessions, FIT@Work. Brussels.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ─── RESET & BASE ──────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #080808;
+  --bg2: #0f0f0f;
+  --bg3: #141414;
+  --orange: #FF4500;
+  --orange2: #FF6B35;
+  --orange-glow: rgba(255,69,0,0.35);
+  --white: #f5f5f0;
+  --muted: rgba(245,245,240,0.45);
+  --border: rgba(255,255,255,0.07);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-ui: 'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ─── CUSTOM CURSOR ─────────────────────────────────────────── */
+.cursor {
+  width: 12px; height: 12px;
+  background: var(--orange);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease, opacity 0.3s;
+  mix-blend-mode: normal;
+}
+.cursor-ring {
+  width: 40px; height: 40px;
+  border: 1.5px solid var(--orange);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), width 0.3s, height 0.3s, opacity 0.3s;
+  opacity: 0.6;
+}
+.cursor.hover { transform: scale(2.5); }
+.cursor-ring.hover { width: 60px; height: 60px; opacity: 0.3; }
+
+/* ─── NOISE OVERLAY ─────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9997;
+}
+
+/* ─── NAV ───────────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 28px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  padding: 16px 60px;
+  background: rgba(8,8,8,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo span {
+  color: var(--orange);
+}
+.logo-dot {
+  width: 8px; height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--orange);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--orange) !important;
+  color: var(--white) !important;
+  padding: 10px 24px !important;
+  font-weight: 700 !important;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  transition: background 0.2s, transform 0.2s !important;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--orange2) !important; transform: scale(1.04) !important; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 28px; height: 2px;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(8,8,8,0.97);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--orange); }
+
+/* ─── HERO ──────────────────────────────────────────────────── */
+#home {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 60px 80px;
+  overflow: hidden;
+}
+
+canvas#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(12rem, 28vw, 22rem);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.02em;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.hero-label {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s 0.3s forwards;
+}
+.hero-label::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--orange);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 13vw, 10.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.9s 0.5s forwards;
+}
+
+.hero-title .line2 {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--orange);
+  position: relative;
+}
+.hero-title .line2::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--orange);
+  clip-path: inset(0 100% 0 0);
+  animation: fill-text 1.2s 1.5s cubic-bezier(0.77,0,0.175,1) forwards;
+}
+@keyframes fill-text {
+  to { clip-path: inset(0 0% 0 0); }
+}
+
+.hero-sub {
+  font-family: var(--font-ui);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.9s 0.8s forwards;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.9s 1s forwards;
+}
+
+.btn-primary {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--orange);
+  padding: 16px 40px;
+  text-decoration: none;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: background 0.25s, transform 0.2s, box-shadow 0.3s;
+  display: inline-block;
+}
+.btn-primary:hover {
+  background: var(--orange2);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px var(--orange-glow);
+}
+
+.btn-secondary {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: transparent;
+  padding: 15px 40px;
+  border: 1px solid rgba(255,255,255,0.25);
+  text-decoration: none;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: border-color 0.25s, background 0.25s, transform 0.2s;
+  display: inline-block;
+}
+.btn-secondary:hover {
+  border-color: var(--orange);
+  background: rgba(255,69,0,0.08);
+  transform: translateY(-2px);
+}
+
+.hero-scroll {
+  position: absolute;
+  right: 60px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeIn 1s 2s forwards;
+}
+.hero-scroll span {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+}
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--orange), transparent);
+  animation: scroll-anim 2s infinite;
+}
+@keyframes scroll-anim {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ─── TICKER ────────────────────────────────────────────────── */
+.ticker-wrap {
+  background: var(--orange);
+  overflow: hidden;
+  padding: 14px 0;
+  position: relative;
+  z-index: 3;
+}
+.ticker {
+  display: flex;
+  gap: 0;
+  animation: ticker 25s linear infinite;
+  white-space: nowrap;
+}
+.ticker-inner {
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+}
+.ticker span {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  padding: 0 32px;
+  color: var(--white);
+}
+.ticker span.sep {
+  color: rgba(255,255,255,0.4);
+  padding: 0;
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ─── SECTION BASE ──────────────────────────────────────────── */
+section { padding: 120px 60px; }
+
+.section-label {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background: var(--orange);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  margin-bottom: 16px;
+}
+
+/* Fade-up animation for sections */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ─── STATS ─────────────────────────────────────────────────── */
+#stats {
+  padding: 80px 60px;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.stat-card {
+  background: var(--bg2);
+  padding: 48px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+.stat-card:hover::before { transform: scaleX(1); }
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  color: var(--orange);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.stat-label {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ─── ABOUT ─────────────────────────────────────────────────── */
+#about {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+  padding: 140px 60px;
+}
+.about-text .section-title { margin-bottom: 28px; }
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: rgba(245,245,240,0.7);
+  margin-bottom: 20px;
+}
+.about-quote {
+  margin-top: 48px;
+  padding: 32px 36px;
+  border-left: 3px solid var(--orange);
+  background: rgba(255,69,0,0.05);
+}
+.about-quote blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  color: var(--white);
+}
+.about-quote cite {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-top: 12px;
+  font-style: normal;
+}
+
+.about-visual {
+  position: relative;
+}
+.about-big-text {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 14vw, 12rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.06);
+  user-select: none;
+  position: relative;
+}
+.about-icon-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 20px;
+}
+.icon-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.icon-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-4px);
+}
+.icon-card .ic-emoji { font-size: 1.8rem; }
+.icon-card .ic-title {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.icon-card .ic-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ─── TRAININGS ─────────────────────────────────────────────── */
+#trainings {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+}
+.trainings-header {
+  max-width: 1300px;
+  margin: 0 auto 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+}
+.trainings-header p {
+  max-width: 400px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.trainings-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+.training-card {
+  background: var(--bg2);
+  padding: 48px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+.training-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,69,0,0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.training-card:hover::after { opacity: 1; }
+.training-card:hover .training-number { color: var(--orange); }
+
+.training-number {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: rgba(255,255,255,0.07);
+  line-height: 1;
+  transition: color 0.3s;
+  position: relative;
+  z-index: 1;
+}
+.training-icon { font-size: 2rem; position: relative; z-index: 1; }
+.training-title {
+  font-family: var(--font-ui);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+.training-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.65;
+  position: relative;
+  z-index: 1;
+}
+.training-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  text-decoration: none;
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
+  transition: gap 0.2s;
+}
+.training-link:hover { gap: 14px; }
+.training-link::after { content: '→'; }
+
+/* ─── CLASSES ───────────────────────────────────────────────── */
+#classes { max-width: 1400px; margin: 0 auto; }
+.classes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 64px;
+  gap: 32px;
+}
+.classes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.class-card {
+  position: relative;
+  padding: 40px 36px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+.class-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-6px);
+}
+.class-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.class-card:hover::before { transform: scaleX(1); }
+
+.class-bg-number {
+  position: absolute;
+  bottom: -20px; right: -10px;
+  font-family: var(--font-display);
+  font-size: 7rem;
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  user-select: none;
+}
+.class-emoji { font-size: 2.5rem; margin-bottom: 20px; display: block; }
+.class-name {
+  font-family: var(--font-ui);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.class-tag {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  border: 1px solid var(--orange);
+  padding: 4px 12px;
+  margin-top: 16px;
+}
+.class-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ─── TRAINERS ──────────────────────────────────────────────── */
+#trainers {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+}
+.trainers-header {
+  max-width: 1300px;
+  margin: 0 auto 64px;
+}
+.trainers-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.trainer-card {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+.trainer-card:hover { transform: translateY(-8px); }
+.trainer-card:hover .trainer-overlay { opacity: 1; }
+.trainer-card:hover .trainer-img-placeholder { transform: scale(1.05); }
+
+.trainer-img-placeholder {
+  width: 100%; height: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.trainer-letter {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: rgba(255,255,255,0.08);
+  line-height: 1;
+}
+.trainer-gradient {
+  position: absolute;
+  inset: 0;
+}
+.trainer-info {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+}
+.trainer-name {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.trainer-role {
+  font-size: 0.78rem;
+  color: var(--orange);
+  font-family: var(--font-ui);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.trainer-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(255,69,0,0.7) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+.trainer-overlay-text {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+/* ─── MANIFESTO BANNER ──────────────────────────────────────── */
+#manifesto {
+  padding: 120px 60px;
+  background: var(--orange);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+#manifesto::before {
+  content: 'SPORT';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 30vw;
+  color: rgba(0,0,0,0.08);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+.manifesto-text {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: var(--white);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  position: relative;
+  z-index: 1;
+}
+.manifesto-sub {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 40px;
+}
+#manifesto .btn-primary {
+  background: var(--white);
+  color: var(--orange);
+  position: relative;
+  z-index: 1;
+}
+#manifesto .btn-primary:hover { background: var(--bg); color: var(--white); }
+
+/* ─── LOCATIONS ─────────────────────────────────────────────── */
+#contact {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 60px;
+}
+.contact-block h3 {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+.location-item {
+  padding: 28px 32px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  margin-bottom: 12px;
+  transition: border-color 0.3s;
+}
+.location-item:hover { border-color: var(--orange); }
+.location-item .loc-type {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+.location-item .loc-name {
+  font-family: var(--font-ui);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.location-item .loc-address {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.hours-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 32px;
+  margin-bottom: 24px;
+}
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.hours-row:last-child { border-bottom: none; }
+.hours-day {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hours-time {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.contact-info { display: flex; flex-direction: column; gap: 12px; }
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 28px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--white);
+  transition: border-color 0.3s, transform 0.2s;
+}
+.contact-item:hover { border-color: var(--orange); transform: translateX(6px); }
+.contact-item .ci-icon { font-size: 1.4rem; }
+.contact-item .ci-label {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.contact-item .ci-value {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.map-placeholder {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 12px;
+}
+.map-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, var(--border) 0px, var(--border) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, var(--border) 0px, var(--border) 1px, transparent 1px, transparent 40px);
+}
+.map-pin {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.map-pin-icon { font-size: 2rem; animation: bounce 2s infinite; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ─── SOCIAL ────────────────────────────────────────────────── */
+.social-strip {
+  padding: 60px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.social-label {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.social-links { display: flex; gap: 20px; }
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.social-link:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-2px); }
+
+/* ─── FOOTER ────────────────────────────────────────────────── */
+footer {
+  padding: 40px 60px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--white);
+}
+.footer-logo span { color: var(--orange); }
+.footer-copy {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+.footer-links a {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--orange); }
+
+/* ─── KEYFRAMES ─────────────────────────────────────────────── */
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .trainings-grid { grid-template-columns: repeat(2, 1fr); }
+  .trainers-grid { grid-template-columns: repeat(3, 1fr); }
+  #about { grid-template-columns: 1fr; gap: 60px; }
+  .about-icon-grid { position: static; }
+  .about-big-text { display: none; }
+}
+@media (max-width: 900px) {
+  section { padding: 80px 32px; }
+  nav { padding: 24px 32px; }
+  nav.scrolled { padding: 16px 32px; }
+  #home { padding: 0 32px 80px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .classes-grid { grid-template-columns: repeat(2, 1fr); }
+  .trainers-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; }
+  .trainings-header { flex-direction: column; align-items: flex-start; }
+  .classes-header { flex-direction: column; align-items: flex-start; }
+  .social-strip { padding: 40px 32px; }
+  footer { padding: 32px; flex-direction: column; align-items: flex-start; }
+  .hero-scroll { display: none; }
+}
+@media (max-width: 600px) {
+  section { padding: 64px 20px; }
+  nav { padding: 20px; }
+  nav.scrolled { padding: 14px 20px; }
+  #home { padding: 0 20px 60px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .classes-grid { grid-template-columns: 1fr; }
+  .trainers-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-secondary { text-align: center; }
+  .social-strip { padding: 32px 20px; flex-direction: column; align-items: flex-start; }
+  .social-links { flex-wrap: wrap; }
+  footer { padding: 24px 20px; }
+  .footer-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#home" class="mobile-nav-link">Home</a>
+  <a href="#trainings" class="mobile-nav-link">Trainings</a>
+  <a href="#classes" class="mobile-nav-link">Classes</a>
+  <a href="#trainers" class="mobile-nav-link">Trainers</a>
+  <a href="#contact" class="mobile-nav-link">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">CARLITO<span>.</span>SPORT <div class="logo-dot"></div></a>
+  <ul class="nav-links">
+    <li><a href="#trainings">Trainings</a></li>
+    <li><a href="#classes">Classes</a></li>
+    <li><a href="#trainers">Trainers</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-bg-text">CARLITO</div>
+
+  <div class="hero-content">
+    <div class="hero-label">Brussels — European Quarter</div>
+    <h1 class="hero-title">
+      THE BEST<br>
+      <span class="line2" data-text="FITNESS">FITNESS</span><br>
+      TRAINING
+    </h1>
+    <p class="hero-sub">Indoor &amp; Outdoor Classes &nbsp;·&nbsp; Brussels &nbsp;·&nbsp; Mon–Sun 6AM–10PM</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">Book a Class</a>
+      <a href="#trainings" class="btn-secondary">Explore Programs</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>Personal Training</span><span class="sep">—</span>
+      <span>Group Classes</span><span class="sep">—</span>
+      <span>Cardio Boxing</span><span class="sep">—</span>
+      <span>Strength</span><span class="sep">—</span>
+      <span>Yoga</span><span class="sep">—</span>
+      <span>FIT@Work</span><span class="sep">—</span>
+      <span>Nutrition Coaching</span><span class="sep">—</span>
+      <span>J'peux pas j'ai Carlito</span><span class="sep">—</span>
+      <span>Parc du Cinquantenaire</span><span class="sep">—</span>
+    </div>
+    <div class="ticker-inner" aria-hidden="true">
+      <span>Personal Training</span><span class="sep">—</span>
+      <span>Group Classes</span><span class="sep">—</span>
+      <span>Cardio Boxing</span><span class="sep">—</span>
+      <span>Strength</span><span class="sep">—</span>
+      <span>Yoga</span><span class="sep">—</span>
+      <span>FIT@Work</span><span class="sep">—</span>
+      <span>Nutrition Coaching</span><span class="sep">—</span>
+      <span>J'peux pas j'ai Carlito</span><span class="sep">—</span>
+      <span>Parc du Cinquantenaire</span><span class="sep">—</span>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="stat-number" data-count="5">0</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number" data-count="500">0</div>
+      <div class="stat-label">Active Members</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number" data-count="6">0</div>
+      <div class="stat-label">Class Types</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-number" data-count="7">0</div>
+      <div class="stat-label">Days a Week</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" style="padding-left:60px;padding-right:60px;">
+  <div class="about-text reveal">
+    <div class="section-label">Our Story</div>
+    <h2 class="section-title">TRAIN<br>HARDER.<br>LIVE<br>BETTER.</h2>
+    <p>Born in the heart of Brussels's European Quarter, Carlito Sport is more than a gym — it's a community built on sweat, ambition, and mutual support. Whether you're taking your first step or crushing personal records, there's a place for you here.</p>
+    <p>With both indoor facilities at Avenue de Tervueren and outdoor sessions at the iconic Parc du Cinquantenaire athletics track, we bring training to life in every environment.</p>
+    <div class="about-quote">
+      <blockquote>"J'peux pas j'ai Carlito"</blockquote>
+      <cite>— The Carlito Sport Community</cite>
+    </div>
+  </div>
+  <div class="about-visual reveal reveal-delay-2">
+    <div class="about-big-text">MOVE</div>
+    <div class="about-icon-grid">
+      <div class="icon-card">
+        <span class="ic-emoji">🏋️</span>
+        <div class="ic-title">Weight Training</div>
+        <div class="ic-desc">Build strength and muscle with expert-guided lifting programs.</div>
+      </div>
+      <div class="icon-card">
+        <span class="ic-emoji">🥊</span>
+        <div class="ic-title">Boxing</div>
+        <div class="ic-desc">High-intensity cardio boxing for fitness and technique.</div>
+      </div>
+      <div class="icon-card">
+        <span class="ic-emoji">🧘</span>
+        <div class="ic-title">Yoga</div>
+        <div class="ic-desc">Restore balance, flexibility, and mindfulness.</div>
+      </div>
+      <div class="icon-card">
+        <span class="ic-emoji">🥗</span>
+        <div class="ic-title">Nutrition</div>
+        <div class="ic-desc">Personalised nutrition coaching to fuel your performance.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAININGS -->
+<section id="trainings">
+  <div class="trainings-header">
+    <div>
+      <div class="section-label reveal">Training Programs</div>
+      <h2 class="section-title reveal">HOW WE<br>TRAIN</h2>
+    </div>
+    <p class="reveal reveal-delay-2">Choose the format that fits your life — from dedicated 1-on-1 coaching to energetic group sessions and corporate wellness at the office.</p>
+  </div>
+  <div class="trainings-grid">
+    <div class="training-card reveal">
+      <div class="training-number">01</div>
+      <div class="training-icon">🎯</div>
+      <div class="training-title">Personal Training</div>
+      <div class="training-desc">Fully tailored 1-on-1 sessions designed around your specific goals, schedule, and fitness level. Maximum results, minimum wasted effort.</div>
+      <a href="#" class="training-link">Discover</a>
+    </div>
+    <div class="training-card reveal reveal-delay-1">
+      <div class="training-number">02</div>
+      <div class="training-icon">👥</div>
+      <div class="training-title">Small Group</div>
+      <div class="training-desc">The best of both worlds — personalised attention within a motivating small group. Train alongside friends without losing that individual focus.</div>
+      <a href="#" class="training-link">Discover</a>
+    </div>
+    <div class="training-card reveal reveal-delay-2">
+      <div class="training-number">03</div>
+      <div class="training-icon">🔥</div>
+      <div class="training-title">Group Training</div>
+      <div class="training-desc">High-energy classes open to all fitness levels. The community energy pushes you further than you'd go alone. No experience required.</div>
+      <a href="#" class="training-link">Discover</a>
+    </div>
+    <div class="training-card reveal reveal-delay-3">
+      <div class="training-number">04</div>
+      <div class="training-icon">🏢</div>
+      <div class="training-title">FIT@Work</div>
+      <div class="training-desc">Corporate wellness programs delivered at your office or our facilities. Improve team wellbeing, productivity, and cohesion.</div>
+      <a href="#" class="training-link">Discover</a>
+    </div>
+  </div>
+</section>
+
+<!-- CLASSES -->
+<section id="classes" style="padding-left:60px;padding-right:60px;max-width:none;">
+  <div style="max-width:1300px;margin:0 auto;">
+  <div class="classes-header">
+    <div>
+      <div class="section-label reveal">Schedule</div>
+      <h2 class="section-title reveal">OUR<br>CLASSES</h2>
+    </div>
+    <a href="#" class="btn-primary reveal reveal-delay-2" style="align-self:flex-end;">View Full Schedule</a>
+  </div>
+  <div class="classes-grid">
+    <div class="class-card reveal">
+      <span class="class-emoji">💪</span>
+      <div class="class-bg-number">01</div>
+      <div class="class-name">Full Body Workout</div>
+      <div class="class-desc">Complete head-to-toe conditioning combining compound movements, core work, and cardio bursts for total fitness transformation.</div>
+      <div class="class-tag">All Levels</div>
+    </div>
+    <div class="class-card reveal reveal-delay-1">
+      <span class="class-emoji">🫀</span>
+      <div class="class-bg-number">02</div>
+      <div class="class-name">Cardio &amp; ABS</div>
+      <div class="class-desc">Burn calories, build core strength, and improve cardiovascular endurance with this targeted high-intensity session.</div>
+      <div class="class-tag">Intermediate</div>
+    </div>
+    <div class="class-card reveal reveal-delay-2">
+      <span class="class-emoji">🍑</span>
+      <div class="class-bg-number">03</div>
+      <div class="class-name">Booty Sessions</div>
+      <div class="class-desc">Sculpt and strengthen the glutes, hamstrings, and lower body with progressive resistance and plyometric training.</div>
+      <div class="class-tag">All Levels</div>
+    </div>
+    <div class="class-card reveal reveal-delay-1">
+      <span class="class-emoji">🏋️</span>
+      <div class="class-bg-number">04</div>
+      <div class="class-name">Strength Training</div>
+      <div class="class-desc">Progressive overload programming to build functional strength, muscle, and power under expert coaching supervision.</div>
+      <div class="class-tag">All Levels</div>
+    </div>
+    <div class="class-card reveal reveal-delay-2">
+      <span class="class-emoji">🥊</span>
+      <div class="class-bg-number">05</div>
+      <div class="class-name">Cardio Boxing</div>
+      <div class="class-desc">Channel your energy into a full-body cardio and coordination workout inspired by boxing technique. No fighting, all fitness.</div>
+      <div class="class-tag">Beginner Friendly</div>
+    </div>
+    <div class="class-card reveal reveal-delay-3">
+      <span class="class-emoji">🧘</span>
+      <div class="class-bg-number">06</div>
+      <div class="class-name">Yoga</div>
+      <div class="class-desc">Find balance, flexibility, and mental clarity. The perfect complement to intense training — recovery and mindfulness in one.</div>
+      <div class="class-tag">All Levels</div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- TRAINERS -->
+<section id="trainers">
+  <div class="trainers-header">
+    <div class="section-label reveal">The Team</div>
+    <h2 class="section-title reveal">MEET YOUR<br>COACHES</h2>
+  </div>
+  <div class="trainers-grid">
+    <div class="trainer-card reveal">
+      <div class="trainer-img-placeholder">
+        <div class="trainer-gradient" style="background: linear-gradient(135deg, #1a0800 0%, #3d1200 50%, #0a0a0a 100%);"></div>
+        <div class="trainer-letter" style="color:rgba(255,69,0,0.15);">C</div>
+      </div>
+      <div class="trainer-info">
+        <div class="trainer-name">Carlos</div>
+        <div class="trainer-role">Head Coach &amp; Founder</div>
+      </div>
+      <div class="trainer-overlay"><div class="trainer-overlay-text">Personal Training<br>Nutrition</div></div>
+    </div>
+    <div class="trainer-card reveal reveal-delay-1">
+      <div class="trainer-img-placeholder">
+        <div class="trainer-gradient" style="background: linear-gradient(135deg, #080d1a 0%, #0d1f3c 50%, #0a0a0a 100%);"></div>
+        <div class="trainer-letter">T</div>
+      </div>
+      <div class="trainer-info">
+        <div class="trainer-name">Thomas</div>
+        <div class="trainer-role">Strength &amp; Conditioning</div>
+      </div>
+      <div class="trainer-overlay"><div class="trainer-overlay-text">Strength<br>Full Body</div></div>
+    </div>
+    <div class="trainer-card reveal reveal-delay-2">
+      <div class="trainer-img-placeholder">
+        <div class="trainer-gradient" style="background: linear-gradient(135deg, #0a1208 0%, #1a2e12 50%, #0a0a0a 100%);"></div>
+        <div class="trainer-letter">S</div>
+      </div>
+      <div class="trainer-info">
+        <div class="trainer-name">Soufiane</div>
+        <div class="trainer-role">Cardio Boxing</div>
+      </div>
+      <div class="trainer-overlay"><div class="trainer-overlay-text">Boxing<br>Cardio</div></div>
+    </div>
+    <div class="trainer-card reveal reveal-delay-3">
+      <div class="trainer-img-placeholder">
+        <div class="trainer-gradient" style="background: linear-gradient(135deg, #1a0a14 0%, #3d1228 50%, #0a0a0a 100%);"></div>
+        <div class="trainer-letter">S</div>
+      </div>
+      <div class="trainer-info">
+        <div class="trainer-name">Sarah</div>
+        <div class="trainer-role">Yoga &amp; Wellness</div>
+      </div>
+      <div class="trainer-overlay"><div class="trainer-overlay-text">Yoga<br>Meditation</div></div>
+    </div>
+    <div class="trainer-card reveal reveal-delay-4">
+      <div class="trainer-img-placeholder">
+        <div class="trainer-gradient" style="background: linear-gradient(135deg, #0f0a1a 0%, #251240 50%, #0a0a0a 100%);"></div>
+        <div class="trainer-letter">E</div>
+      </div>
+      <div class="trainer-info">
+        <div class="trainer-name">Ewa</div>
+        <div class="trainer-role">Group Classes</div>
+      </div>
+      <div class="trainer-overlay"><div class="trainer-overlay-text">Booty<br>ABS &amp; Cardio</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO BANNER -->
+<section id="manifesto">
+  <div class="manifesto-text reveal">
+    "J'peux pas —<br>J'ai Carlito."
+  </div>
+  <p class="manifesto-sub reveal reveal-delay-1">The community. The commitment. The results.</p>
+  <a href="#" class="btn-primary reveal reveal-delay-2">Join the Community</a>
+</section>
+
+<!-- CONTACT & LOCATIONS -->
+<section id="contact" style="padding-left:60px;padding-right:60px;max-width:none;">
+  <div style="max-width:1300px;margin:0 auto;">
+  <div class="section-label reveal">Find Us</div>
+  <h2 class="section-title reveal">LOCATIONS<br>&amp; CONTACT</h2>
+
+  <div class="contact-grid">
+    <div>
+      <div class="contact-block">
+        <h3>Training Locations</h3>
+        <div class="location-item reveal">
+          <div class="loc-type">Indoor</div>
+          <div class="loc-name">Carlito Sport HQ</div>
+          <div class="loc-address">Avenue de Tervueren 32–34<br>Etterbeek, Brussels</div>
+        </div>
+        <div class="location-item reveal reveal-delay-1">
+          <div class="loc-type">Outdoor</div>
+          <div class="loc-name">Parc du Cinquantenaire</div>
+          <div class="loc-address">Athletics Track, Avenue De La Renaissance<br>Etterbeek, Brussels</div>
+        </div>
+        <div class="map-placeholder reveal reveal-delay-2">
+          <div class="map-pin">
+            <span class="map-pin-icon">📍</span>
+            <span>Parc du Cinquantenaire</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-block" style="margin-top:36px;">
+        <h3>Opening Hours</h3>
+        <div class="hours-card reveal">
+          <div class="hours-row">
+            <span class="hours-day">Monday – Friday</span>
+            <span class="hours-time">6:00 – 22:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Saturday</span>
+            <span class="hours-time">7:00 – 20:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sunday</span>
+            <span class="hours-time">8:00 – 18:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="contact-block">
+        <h3>Get in Touch</h3>
+        <div class="contact-info">
+          <a href="tel:+32495315244" class="contact-item reveal">
+            <span class="ci-icon">📞</span>
+            <div>
+              <div class="ci-label">Phone</div>
+              <div class="ci-value">+32 495 31 52 44</div>
+            </div>
+          </a>
+          <a href="mailto:info@carlitosport.com" class="contact-item reveal reveal-delay-1">
+            <span class="ci-icon">✉️</span>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-value">info@carlitosport.com</div>
+            </div>
+          </a>
+          <a href="https://wa.me/32495315244" class="contact-item reveal reveal-delay-2">
+            <span class="ci-icon">💬</span>
+            <div>
+              <div class="ci-label">WhatsApp</div>
+              <div class="ci-value">Message us directly</div>
+            </div>
+          </a>
+          <a href="https://instagram.com/carlito.sport" class="contact-item reveal reveal-delay-3">
+            <span class="ci-icon">📸</span>
+            <div>
+              <div class="ci-label">Instagram</div>
+              <div class="ci-value">@carlito.sport</div>
+            </div>
+          </a>
+          <a href="#" class="contact-item reveal reveal-delay-4">
+            <span class="ci-icon">👍</span>
+            <div>
+              <div class="ci-label">Facebook</div>
+              <div class="ci-value">Carlitosport</div>
+            </div>
+          </a>
+          <a href="#" class="contact-item reveal reveal-delay-5">
+            <span class="ci-icon">🎵</span>
+            <div>
+              <div class="ci-label">TikTok</div>
+              <div class="ci-value">@carlitosport</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-block" style="margin-top:36px;">
+        <h3>Book a Session</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="#" class="btn-primary reveal" style="text-align:center;display:block;padding:20px 40px;">Book via Reservio</a>
+          <a href="#" class="btn-secondary reveal reveal-delay-1" style="text-align:center;display:block;padding:20px 40px;">Book via BSport</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- SOCIAL STRIP -->
+<div class="social-strip">
+  <span class="social-label">Follow the journey</span>
+  <div class="social-links">
+    <a href="https://instagram.com/carlito.sport" class="social-link">Instagram</a>
+    <a href="#" class="social-link">Facebook</a>
+    <a href="#" class="social-link">TikTok</a>
+    <a href="#" class="social-link">LinkedIn</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">CARLITO<span>.</span>SPORT</div>
+  <p class="footer-copy">© 2024 Carlito Sport. Brussels, European Quarter.</p>
+  <ul class="footer-links">
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#">Terms</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+// ─── CUSTOM CURSOR ──────────────────────────────────────────────
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
+});
+
+function animateRing() {
+  rx += (mx - rx - 20) * 0.12;
+  ry += (my - ry - 20) * 0.12;
+  ring.style.transform = `translate(${rx}px, ${ry}px)`;
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .training-card, .class-card, .trainer-card, .stat-card').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+});
+
+// ─── HERO CANVAS ────────────────────────────────────────────────
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+
+function resize() {
+  W = canvas.width = canvas.offsetWidth;
+  H = canvas.height = canvas.offsetHeight;
+}
+resize();
+window.addEventListener('resize', () => { resize(); init(); });
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.r = Math.random() * 1.5 + 0.5;
+    this.alpha = Math.random() * 0.5 + 0.1;
+    this.color = Math.random() > 0.7 ? `rgba(255,${Math.floor(Math.random()*50)},0,${this.alpha})` : `rgba(245,245,240,${this.alpha * 0.4})`;
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
+}
+
+function init() {
+  particles = Array.from({ length: 120 }, () => new Particle());
+}
+init();
+
+function drawConnections() {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 100) {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(255,69,0,${(1 - dist/100) * 0.05})`;
+        ctx.lineWidth = 0.5;
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function loop() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Gradient bg
+  const grad = ctx.createRadialGradient(W*0.3, H*0.6, 0, W*0.3, H*0.6, W*0.7);
+  grad.addColorStop(0, 'rgba(255,69,0,0.06)');
+  grad.addColorStop(1, 'rgba(8,8,8,0)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  drawConnections();
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(loop);
+}
+loop();
+
+// ─── NAVBAR ─────────────────────────────────────────────────────
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ─── HAMBURGER ──────────────────────────────────────────────────
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// ─── SCROLL REVEAL ──────────────────────────────────────────────
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ─── COUNT UP ───────────────────────────────────────────────────
+function countUp(el, target, suffix = '') {
+  let start = 0;
+  const duration = 1800;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= target) { start = target; clearInterval(timer); }
+    el.textContent = Math.floor(start) + suffix;
+  }, 16);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const nums = entry.target.querySelectorAll('[data-count]');
+      nums.forEach(num => {
+        const target = parseInt(num.dataset.count);
+        const suffix = target === 5 ? '+' : target === 500 ? '+' : '';
+        countUp(num, target, suffix);
+      });
+      statsObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const statsSection = document.getElementById('stats');
+if (statsSection) statsObserver.observe(statsSection);
+</script>
+</body>
+</html>
