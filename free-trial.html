@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Try a Free Class — Carlito Sport Brussels</title>
+<meta name="description" content="Claim your free first class at Carlito Sport Brussels. No credit card, no commitment. Just show up and experience it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #080808; --bg2: #0f0f0f; --bg3: #141414;
+  --orange: #FF4500; --orange2: #FF6B35;
+  --white: #f5f5f0; --muted: rgba(245,245,240,0.45);
+  --border: rgba(255,255,255,0.07);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-ui: 'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+}
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { background: var(--bg); color: var(--white); font-family: var(--font-body); overflow-x: hidden; cursor: none; min-height: 100vh; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: 9997; }
+
+.cursor { width: 12px; height: 12px; background: var(--orange); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; }
+.cursor-ring { width: 40px; height: 40px; border: 1.5px solid var(--orange); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), width 0.3s, height 0.3s, opacity 0.3s; opacity: 0.6; }
+.cursor.hover { transform: scale(2.5); }
+.cursor-ring.hover { width: 60px; height: 60px; opacity: 0.3; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s ease; }
+nav.scrolled { padding: 16px 60px; background: rgba(8,8,8,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: var(--font-display); font-size: 2rem; letter-spacing: 0.05em; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.nav-logo span { color: var(--orange); }
+.logo-dot { width: 8px; height: 8px; background: var(--orange); border-radius: 50%; display: inline-block; animation: pulse-dot 2s infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.7);} }
+.nav-back { font-family: var(--font-ui); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+.nav-back:hover { color: var(--white); }
+.nav-back::before { content: '←'; }
+
+/* MAIN LAYOUT */
+.trial-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* LEFT PANEL */
+.trial-left {
+  background: var(--orange);
+  padding: 160px 80px 80px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.trial-left::before {
+  content: 'FREE';
+  position: absolute;
+  bottom: -60px; left: -40px;
+  font-family: var(--font-display);
+  font-size: clamp(12rem, 20vw, 18rem);
+  color: rgba(0,0,0,0.08);
+  line-height: 1;
+  pointer-events: none; user-select: none;
+  white-space: nowrap;
+}
+
+.tl-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+.tl-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: rgba(255,255,255,0.4);
+}
+
+.tl-title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 8vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.tl-sub {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 48px;
+  max-width: 420px;
+  position: relative;
+  z-index: 1;
+}
+
+.tl-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+.tl-perk {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.tl-perk-dot {
+  width: 8px; height: 8px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tl-testimonial {
+  background: rgba(0,0,0,0.15);
+  padding: 28px 32px;
+  position: relative;
+  z-index: 1;
+  border-left: 3px solid rgba(255,255,255,0.3);
+}
+.tl-quote {
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 16px;
+}
+.tl-quote-author {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+
+/* RIGHT PANEL — FORM */
+.trial-right {
+  background: var(--bg);
+  padding: 160px 80px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-header {
+  margin-bottom: 48px;
+}
+.form-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.form-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--orange); }
+.form-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 0.95;
+  margin-bottom: 16px;
+}
+.form-sub {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* FORM */
+.trial-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-group.full { grid-column: 1 / -1; }
+.form-label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.form-input, .form-select, .form-textarea {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 14px 18px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--orange);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+.form-select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23FF4500' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+.form-select option { background: var(--bg2); color: var(--white); }
+.form-textarea { resize: vertical; min-height: 100px; }
+
+.form-submit-wrap {
+  margin-top: 8px;
+}
+.btn-submit {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--orange);
+  padding: 18px 48px;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+  transition: background 0.25s, transform 0.2s, box-shadow 0.3s;
+  width: 100%;
+}
+.btn-submit:hover {
+  background: var(--orange2);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(255,69,0,0.35);
+}
+
+.form-disclaimer {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+/* SUCCESS STATE */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 48px 0;
+}
+.form-success.visible { display: block; }
+.success-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+  font-size: 2rem;
+}
+.success-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+.success-sub {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 400px;
+  margin: 0 auto 32px;
+}
+.success-link {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.2s;
+}
+.success-link:hover { gap: 14px; }
+.success-link::after { content: '→'; }
+
+/* FOOTER */
+footer { padding: 32px 60px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; background: var(--bg); }
+.footer-logo { font-family: var(--font-display); font-size: 1.6rem; color: var(--white); }
+.footer-logo span { color: var(--orange); }
+.footer-copy { font-family: var(--font-ui); font-size: 0.8rem; letter-spacing: 0.08em; color: var(--muted); }
+
+@media (max-width: 1100px) {
+  .trial-layout { grid-template-columns: 1fr; }
+  .trial-left { padding: 140px 48px 64px; min-height: auto; }
+  .trial-right { padding: 64px 48px 80px; }
+}
+@media (max-width: 900px) {
+  nav { padding: 24px 32px; }
+  nav.scrolled { padding: 16px 32px; }
+  .trial-left { padding: 120px 32px 56px; }
+  .trial-right { padding: 56px 32px 64px; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { padding: 28px 32px; flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  nav { padding: 20px; }
+  .trial-left { padding: 100px 20px 48px; }
+  .trial-right { padding: 48px 20px 60px; }
+  footer { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">CARLITO<span>.</span>SPORT <div class="logo-dot"></div></a>
+  <a href="index.html" class="nav-back">Back to Home</a>
+</nav>
+
+<div class="trial-layout">
+
+  <!-- LEFT: VALUE PROPOSITION -->
+  <div class="trial-left">
+    <div>
+      <div class="tl-eyebrow">Zero Risk — Zero Cost</div>
+      <h1 class="tl-title">YOUR FIRST<br>CLASS IS<br>FREE.</h1>
+      <p class="tl-sub">No credit card. No long-term contract. Just come in, experience a full class, meet the coaches, and feel the community for yourself.</p>
+
+      <div class="tl-perks">
+        <div class="tl-perk"><span class="tl-perk-dot"></span>Full group class — any type you choose</div>
+        <div class="tl-perk"><span class="tl-perk-dot"></span>Free parking at Avenue de Tervueren</div>
+        <div class="tl-perk"><span class="tl-perk-dot"></span>Personal welcome from your coach</div>
+        <div class="tl-perk"><span class="tl-perk-dot"></span>Indoor or outdoor — your preference</div>
+        <div class="tl-perk"><span class="tl-perk-dot"></span>No commitment required. Come once, stay forever.</div>
+      </div>
+    </div>
+
+    <div class="tl-testimonial">
+      <p class="tl-quote">"I showed up not knowing what to expect. Two years later I haven't missed a week. The first class really does say everything."</p>
+      <div class="tl-quote-author">— Jurate L., Member since 2022</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: FORM -->
+  <div class="trial-right">
+    <div class="form-header">
+      <div class="form-eyebrow">Claim Your Spot</div>
+      <h2 class="form-title">BOOK YOUR<br>FREE CLASS</h2>
+      <p class="form-sub">Fill in your details below and we'll confirm your free session within 24 hours. You can also reach us directly on WhatsApp.</p>
+    </div>
+
+    <form class="trial-form" id="trial-form" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="first-name">First Name *</label>
+          <input class="form-input" type="text" id="first-name" name="first_name" placeholder="Carlos" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="last-name">Last Name *</label>
+          <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Fernandez" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="email">Email *</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">Phone</label>
+          <input class="form-input" type="tel" id="phone" name="phone" placeholder="+32 4XX XX XX XX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="class-type">Which class are you interested in? *</label>
+        <select class="form-select" id="class-type" name="class_type" required>
+          <option value="" disabled selected>Choose a class type</option>
+          <option>Full Body Workout</option>
+          <option>Cardio &amp; ABS</option>
+          <option>Booty Sessions</option>
+          <option>Strength Training</option>
+          <option>Cardio Boxing</option>
+          <option>Yoga</option>
+          <option>Not sure yet — surprise me!</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="location">Preferred location</label>
+        <select class="form-select" id="location" name="location">
+          <option value="" disabled selected>Choose a location</option>
+          <option>Indoor — Avenue de Tervueren, Etterbeek</option>
+          <option>Outdoor — Parc du Cinquantenaire</option>
+          <option>No preference</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="fitness-level">Current fitness level</label>
+        <select class="form-select" id="fitness-level" name="fitness_level">
+          <option value="" disabled selected>Where are you at?</option>
+          <option>Complete beginner — haven't trained in a while</option>
+          <option>Casual — I do a bit here and there</option>
+          <option>Regular — I train 2–3x a week</option>
+          <option>Advanced — I train hard and often</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="message">Anything you'd like us to know? (optional)</label>
+        <textarea class="form-textarea" id="message" name="message" placeholder="Goals, injuries, preferred days, questions..."></textarea>
+      </div>
+      <div class="form-submit-wrap">
+        <button type="submit" class="btn-submit">Claim My Free Class</button>
+        <p class="form-disclaimer" style="margin-top:14px;">By submitting, you agree to be contacted by Carlito Sport to confirm your booking. We will never share your data with third parties.</p>
+      </div>
+    </form>
+
+    <!-- SUCCESS STATE -->
+    <div class="form-success" id="form-success">
+      <div class="success-icon">&#10003;</div>
+      <div class="success-title">YOU'RE IN!</div>
+      <p class="success-sub">We've received your request and will confirm your free class within 24 hours via email or WhatsApp. See you on the mat.</p>
+      <a href="index.html" class="success-link">Back to Home</a>
+    </div>
+
+    <!-- WHATSAPP ALTERNATIVE -->
+    <div style="margin-top:32px;padding-top:32px;border-top:1px solid var(--border);">
+      <p style="font-family:var(--font-ui);font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Prefer to message us directly?</p>
+      <a href="https://wa.me/32495315244?text=Hi%2C%20I'd%20like%20to%20book%20my%20free%20class%20at%20Carlito%20Sport!" target="_blank" style="display:inline-flex;align-items:center;gap:10px;font-family:var(--font-ui);font-size:0.9rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);text-decoration:none;border:1px solid var(--border);padding:12px 24px;transition:border-color 0.2s,color 0.2s;" onmouseenter="this.style.borderColor='var(--orange)';this.style.color='var(--orange)';" onmouseleave="this.style.borderColor='var(--border)';this.style.color='var(--white)';">
+        WhatsApp Us
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">CARLITO<span>.</span>SPORT</div>
+  <p class="footer-copy">&copy; 2024 Carlito Sport · Brussels · +32 495 31 52 44 · info@carlitosport.com</p>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
+});
+function animateRing() {
+  rx += (mx - rx - 20) * 0.12;
+  ry += (my - ry - 20) * 0.12;
+  ring.style.transform = `translate(${rx}px, ${ry}px)`;
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+document.querySelectorAll('a, button, input, select, textarea').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+});
+
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
+
+// FORM SUBMISSION
+document.getElementById('trial-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const required = this.querySelectorAll('[required]');
+  let valid = true;
+  required.forEach(field => {
+    if (!field.value.trim()) {
+      field.style.borderColor = 'rgba(255,69,0,0.6)';
+      valid = false;
+    } else {
+      field.style.borderColor = '';
+    }
+  });
+
+  if (!valid) return;
+
+  // Submit via mailto or show success
+  // In production, replace with your form backend (Formspree, Netlify Forms, etc.)
+  const data = new FormData(this);
+  const name = data.get('first_name') + ' ' + data.get('last_name');
+  const email = data.get('email');
+  const classType = data.get('class_type');
+
+  // Build mailto as fallback
+  const subject = encodeURIComponent('Free Trial Request — ' + name);
+  const body = encodeURIComponent(
+    'Name: ' + name + '\n' +
+    'Email: ' + email + '\n' +
+    'Phone: ' + (data.get('phone') || 'Not provided') + '\n' +
+    'Class: ' + classType + '\n' +
+    'Location: ' + (data.get('location') || 'No preference') + '\n' +
+    'Fitness Level: ' + (data.get('fitness_level') || 'Not specified') + '\n' +
+    'Message: ' + (data.get('message') || 'None') + '\n'
+  );
+
+  // Show success state
+  document.getElementById('trial-form').style.display = 'none';
+  document.getElementById('form-success').classList.add('visible');
+
+  // Also open mailto as backup notification
+  setTimeout(() => {
+    window.location.href = 'mailto:info@carlitosport.com?subject=' + subject + '&body=' + body;
+  }, 800);
+});
+</script>
+</body>
+</html>

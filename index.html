@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carlito Sport — Best Fitness Training Brussels</title>
-<meta name="description" content="The best fitness training in the heart of the European Quarter. Indoor & Outdoor classes. Personal training, group sessions, FIT@Work. Brussels.">
+<title>Carlito Sport — Try Your First Class Free | Brussels</title>
+<meta name="description" content="Try your first class free at Carlito Sport Brussels. Indoor & outdoor training in the European Quarter. Personal training, group sessions, boxing, yoga. No commitment.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
@@ -48,7 +48,6 @@ body {
   pointer-events: none;
   z-index: 9999;
   transition: transform 0.15s ease, opacity 0.3s;
-  mix-blend-mode: normal;
 }
 .cursor-ring {
   width: 40px; height: 40px;
@@ -103,9 +102,7 @@ nav.scrolled {
   align-items: center;
   gap: 10px;
 }
-.nav-logo span {
-  color: var(--orange);
-}
+.nav-logo span { color: var(--orange); }
 .logo-dot {
   width: 8px; height: 8px;
   background: var(--orange);
@@ -120,13 +117,13 @@ nav.scrolled {
 
 .nav-links {
   display: flex;
-  gap: 36px;
+  gap: 32px;
   list-style: none;
   align-items: center;
 }
 .nav-links a {
   font-family: var(--font-ui);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -184,7 +181,7 @@ nav.scrolled {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 28px;
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
@@ -196,6 +193,18 @@ nav.scrolled {
   transition: color 0.2s;
 }
 .mobile-menu a:hover { color: var(--orange); }
+.mobile-menu .mobile-cta {
+  font-family: var(--font-ui);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--orange);
+  padding: 14px 36px;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  margin-top: 8px;
+}
 
 /*  HERO  */
 #home {
@@ -234,6 +243,31 @@ canvas#hero-canvas {
   position: relative;
   z-index: 2;
   max-width: 900px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,69,0,0.12);
+  border: 1px solid rgba(255,69,0,0.3);
+  padding: 6px 16px;
+  margin-bottom: 20px;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s 0.1s forwards;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: pulse-dot 1.5s infinite;
 }
 
 .hero-label {
@@ -306,9 +340,18 @@ canvas#hero-canvas {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  align-items: center;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeUp 0.9s 1s forwards;
+}
+
+.hero-no-commitment {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .btn-primary {
@@ -424,6 +467,11 @@ canvas#hero-canvas {
 /*  SECTION BASE  */
 section { padding: 120px 60px; }
 
+.section-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
 .section-label {
   font-family: var(--font-ui);
   font-size: 0.8rem;
@@ -452,7 +500,7 @@ section { padding: 120px 60px; }
   margin-bottom: 16px;
 }
 
-/* Fade-up animation for sections */
+/* Fade-up animation */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -480,7 +528,7 @@ section { padding: 120px 60px; }
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--border);
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 .stat-card {
@@ -523,13 +571,15 @@ section { padding: 120px 60px; }
 
 /*  ABOUT  */
 #about {
-  max-width: 1400px;
+  padding: 120px 60px;
+}
+.about-inner {
+  max-width: 1300px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 100px;
   align-items: center;
-  padding: 140px 60px;
 }
 .about-text .section-title { margin-bottom: 28px; }
 .about-text p {
@@ -597,7 +647,21 @@ section { padding: 120px 60px; }
   border-color: var(--orange);
   transform: translateY(-4px);
 }
-.icon-card .ic-emoji { font-size: 1.8rem; }
+.icon-card .ic-icon {
+  width: 28px; height: 28px;
+  border: 1.5px solid var(--orange);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-card .ic-icon::after {
+  content: '';
+  width: 10px; height: 10px;
+  background: var(--orange);
+  border-radius: 50%;
+  opacity: 0.6;
+}
 .icon-card .ic-title {
   font-family: var(--font-ui);
   font-weight: 700;
@@ -669,7 +733,6 @@ section { padding: 120px 60px; }
   position: relative;
   z-index: 1;
 }
-.training-icon { font-size: 2rem; position: relative; z-index: 1; }
 .training-title {
   font-family: var(--font-ui);
   font-size: 1.5rem;
@@ -706,7 +769,10 @@ section { padding: 120px 60px; }
 .training-link::after { content: '→'; }
 
 /*  CLASSES  */
-#classes { max-width: 1400px; margin: 0 auto; }
+#classes {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
 .classes-header {
   display: flex;
   justify-content: space-between;
@@ -753,7 +819,6 @@ section { padding: 120px 60px; }
   line-height: 1;
   user-select: none;
 }
-.class-emoji { font-size: 2.5rem; margin-bottom: 20px; display: block; }
 .class-name {
   font-family: var(--font-ui);
   font-size: 1.4rem;
@@ -866,6 +931,125 @@ section { padding: 120px 60px; }
   color: var(--white);
 }
 
+/*  TESTIMONIALS  */
+#testimonials {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+.testimonials-header {
+  max-width: 1300px;
+  margin: 0 auto 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+}
+.testimonials-meta {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.testimonials-meta::before {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--border);
+}
+.testimonials-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.testimonial-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.testimonial-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-4px);
+}
+.testimonial-stars {
+  display: flex;
+  gap: 4px;
+}
+.testimonial-stars span {
+  display: inline-block;
+  width: 12px; height: 12px;
+  background: var(--orange);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+.testimonial-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(245,245,240,0.75);
+  flex: 1;
+  font-style: italic;
+}
+.testimonial-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.testimonial-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.testimonial-author {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.testimonial-source {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.testimonials-cta {
+  max-width: 1300px;
+  margin: 48px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.testimonials-cta-note {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 /*  MANIFESTO BANNER  */
 #manifesto {
   padding: 120px 60px;
@@ -875,13 +1059,13 @@ section { padding: 120px 60px; }
   overflow: hidden;
 }
 #manifesto::before {
-  content: 'SPORT';
+  content: 'FREE';
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   font-family: var(--font-display);
   font-size: 30vw;
-  color: rgba(0,0,0,0.08);
+  color: rgba(0,0,0,0.07);
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
@@ -893,7 +1077,7 @@ section { padding: 120px 60px; }
   letter-spacing: 0.04em;
   line-height: 1.1;
   max-width: 900px;
-  margin: 0 auto 40px;
+  margin: 0 auto 24px;
   position: relative;
   z-index: 1;
 }
@@ -908,18 +1092,173 @@ section { padding: 120px 60px; }
   z-index: 1;
   margin-bottom: 40px;
 }
-#manifesto .btn-primary {
-  background: var(--white);
-  color: var(--orange);
+.manifesto-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
   position: relative;
   z-index: 1;
 }
+#manifesto .btn-primary {
+  background: var(--white);
+  color: var(--orange);
+}
 #manifesto .btn-primary:hover { background: var(--bg); color: var(--white); }
+#manifesto .btn-secondary {
+  border-color: rgba(255,255,255,0.4);
+  color: var(--white);
+}
+#manifesto .btn-secondary:hover {
+  border-color: var(--white);
+  background: rgba(255,255,255,0.1);
+}
 
-/*  LOCATIONS  */
-#contact {
-  max-width: 1400px;
+/*  PRICING  */
+#pricing {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+}
+.pricing-header {
+  max-width: 1300px;
+  margin: 0 auto 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+}
+.pricing-header p {
+  max-width: 400px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.pricing-grid {
+  max-width: 1100px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+.pricing-card {
+  background: var(--bg2);
+  padding: 52px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+.pricing-card.featured {
+  background: var(--orange);
+}
+.pricing-card-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+.pricing-card.featured .pricing-card-eyebrow {
+  color: rgba(255,255,255,0.7);
+}
+.pricing-card-name {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-bottom: 28px;
+}
+.pricing-card-price {
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 28px;
+}
+.pricing-card.featured .pricing-card-price {
+  border-color: rgba(255,255,255,0.2);
+}
+.pricing-amount {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--orange);
+  letter-spacing: 0.02em;
+}
+.pricing-card.featured .pricing-amount {
+  color: var(--white);
+}
+.pricing-period {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.pricing-card.featured .pricing-period {
+  color: rgba(255,255,255,0.6);
+}
+.pricing-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 40px;
+  flex: 1;
+}
+.pricing-features li {
+  font-size: 0.9rem;
+  color: var(--muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.5;
+}
+.pricing-card.featured .pricing-features li {
+  color: rgba(255,255,255,0.85);
+}
+.pricing-features li::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+.pricing-card.featured .pricing-features li::before {
+  background: rgba(255,255,255,0.6);
+}
+.pricing-card .btn-primary { width: 100%; text-align: center; }
+.pricing-card .btn-secondary { width: 100%; text-align: center; }
+.pricing-card.featured .btn-primary {
+  background: var(--white);
+  color: var(--orange);
+}
+.pricing-card.featured .btn-primary:hover {
+  background: var(--bg);
+  color: var(--white);
+}
+.pricing-note {
+  max-width: 1100px;
+  margin: 24px auto 0;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/*  LOCATIONS & CONTACT  */
+#contact {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
 }
 .contact-grid {
   display: grid;
@@ -1008,7 +1347,19 @@ section { padding: 120px 60px; }
   transition: border-color 0.3s, transform 0.2s;
 }
 .contact-item:hover { border-color: var(--orange); transform: translateX(6px); }
-.contact-item .ci-icon { font-size: 1.4rem; }
+.contact-item .ci-icon {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--orange);
+}
 .contact-item .ci-label {
   font-family: var(--font-ui);
   font-size: 0.7rem;
@@ -1056,7 +1407,11 @@ section { padding: 120px 60px; }
   position: relative;
   z-index: 1;
 }
-.map-pin-icon { font-size: 2rem; animation: bounce 2s infinite; }
+.map-pin-icon {
+  font-size: 2rem;
+  animation: bounce 2s infinite;
+  line-height: 1;
+}
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
@@ -1064,13 +1419,14 @@ section { padding: 120px 60px; }
 
 /*  SOCIAL  */
 .social-strip {
-  padding: 60px;
+  padding: 40px 60px;
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: 24px;
+  background: var(--bg2);
 }
 .social-label {
   font-family: var(--font-ui);
@@ -1080,13 +1436,13 @@ section { padding: 120px 60px; }
   text-transform: uppercase;
   color: var(--muted);
 }
-.social-links { display: flex; gap: 20px; }
+.social-links { display: flex; gap: 12px; flex-wrap: wrap; }
 .social-link {
   display: flex;
   align-items: center;
   gap: 8px;
   font-family: var(--font-ui);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1107,6 +1463,7 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
+  background: var(--bg);
 }
 .footer-logo {
   font-family: var(--font-display);
@@ -1151,12 +1508,16 @@ footer {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .trainings-grid { grid-template-columns: repeat(2, 1fr); }
   .trainers-grid { grid-template-columns: repeat(3, 1fr); }
-  #about { grid-template-columns: 1fr; gap: 60px; }
+  .about-inner { grid-template-columns: 1fr; gap: 60px; }
   .about-icon-grid { position: static; }
   .about-big-text { display: none; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
 }
 @media (max-width: 900px) {
   section { padding: 80px 32px; }
+  #about { padding: 80px 32px; }
+  #stats { padding: 64px 32px; }
+  #manifesto { padding: 80px 32px; }
   nav { padding: 24px 32px; }
   nav.scrolled { padding: 16px 32px; }
   #home { padding: 0 32px 80px; }
@@ -1164,27 +1525,37 @@ footer {
   .hamburger { display: flex; }
   .classes-grid { grid-template-columns: repeat(2, 1fr); }
   .trainers-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; }
   .trainings-header { flex-direction: column; align-items: flex-start; }
   .classes-header { flex-direction: column; align-items: flex-start; }
-  .social-strip { padding: 40px 32px; }
+  .pricing-header { flex-direction: column; align-items: flex-start; }
+  .testimonials-header { flex-direction: column; align-items: flex-start; }
+  .social-strip { padding: 32px; }
   footer { padding: 32px; flex-direction: column; align-items: flex-start; }
   .hero-scroll { display: none; }
+  .manifesto-actions { flex-direction: column; align-items: center; }
 }
 @media (max-width: 600px) {
   section { padding: 64px 20px; }
+  #about { padding: 64px 20px; }
+  #stats { padding: 48px 20px; }
+  #manifesto { padding: 64px 20px; }
   nav { padding: 20px; }
   nav.scrolled { padding: 14px 20px; }
   #home { padding: 0 20px 60px; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .classes-grid { grid-template-columns: 1fr; }
   .trainers-grid { grid-template-columns: repeat(2, 1fr); }
-  .hero-actions { flex-direction: column; }
-  .btn-primary, .btn-secondary { text-align: center; }
-  .social-strip { padding: 32px 20px; flex-direction: column; align-items: flex-start; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .hero-badge { font-size: 0.65rem; }
+  .btn-primary, .btn-secondary { text-align: center; width: 100%; }
+  .social-strip { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
   .social-links { flex-wrap: wrap; }
   footer { padding: 24px 20px; }
   .footer-links { display: none; }
+  .pricing-grid { max-width: 100%; }
 }
 </style>
 </head>
@@ -1197,21 +1568,24 @@ footer {
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobile-menu">
   <a href="#home" class="mobile-nav-link">Home</a>
-  <a href="#trainings" class="mobile-nav-link">Trainings</a>
+  <a href="training.html" class="mobile-nav-link">Training</a>
   <a href="#classes" class="mobile-nav-link">Classes</a>
   <a href="#trainers" class="mobile-nav-link">Trainers</a>
+  <a href="pricing.html" class="mobile-nav-link">Pricing</a>
   <a href="#contact" class="mobile-nav-link">Contact</a>
+  <a href="free-trial.html" class="mobile-cta mobile-nav-link">Try for Free</a>
 </div>
 
 <!-- NAV -->
 <nav id="navbar">
   <a href="#home" class="nav-logo">CARLITO<span>.</span>SPORT <div class="logo-dot"></div></a>
   <ul class="nav-links">
-    <li><a href="#trainings">Trainings</a></li>
+    <li><a href="training.html">Training</a></li>
     <li><a href="#classes">Classes</a></li>
     <li><a href="#trainers">Trainers</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#" class="nav-cta">Book Now</a></li>
+    <li><a href="free-trial.html" class="nav-cta">Free Trial</a></li>
   </ul>
   <div class="hamburger" id="hamburger">
     <span></span>
@@ -1226,16 +1600,18 @@ footer {
   <div class="hero-bg-text">CARLITO</div>
 
   <div class="hero-content">
+    <div class="hero-badge"><span class="hero-badge-dot"></span> First class FREE — no commitment</div>
     <div class="hero-label">Brussels — European Quarter</div>
     <h1 class="hero-title">
-      THE BEST<br>
-      <span class="line2" data-text="FITNESS">FITNESS</span><br>
-      TRAINING
+      YOUR FIRST<br>
+      <span class="line2" data-text="CLASS">CLASS</span><br>
+      IS FREE
     </h1>
-    <p class="hero-sub">Indoor &amp; Outdoor Classes &nbsp;·&nbsp; Brussels &nbsp;·&nbsp; Mon–Sun 6AM–10PM</p>
+    <p class="hero-sub">Indoor &amp; Outdoor &nbsp;·&nbsp; Brussels &nbsp;·&nbsp; Mon–Sun 6AM–10PM</p>
     <div class="hero-actions">
-      <a href="#" class="btn-primary">Book a Class</a>
-      <a href="#trainings" class="btn-secondary">Explore Programs</a>
+      <a href="free-trial.html" class="btn-primary">Claim Free Class</a>
+      <a href="training.html" class="btn-secondary">Explore Training</a>
+      <span class="hero-no-commitment">No card required</span>
     </div>
   </div>
 
@@ -1249,25 +1625,25 @@ footer {
 <div class="ticker-wrap">
   <div class="ticker">
     <div class="ticker-inner">
+      <span>First Class Free</span><span class="sep">—</span>
       <span>Personal Training</span><span class="sep">—</span>
       <span>Group Classes</span><span class="sep">—</span>
       <span>Cardio Boxing</span><span class="sep">—</span>
-      <span>Strength</span><span class="sep">—</span>
+      <span>No Commitment</span><span class="sep">—</span>
       <span>Yoga</span><span class="sep">—</span>
       <span>FIT@Work</span><span class="sep">—</span>
-      <span>Nutrition Coaching</span><span class="sep">—</span>
-      <span>J'peux pas j'ai Carlito</span><span class="sep">—</span>
+      <span>Try Before You Join</span><span class="sep">—</span>
       <span>Parc du Cinquantenaire</span><span class="sep">—</span>
     </div>
     <div class="ticker-inner" aria-hidden="true">
+      <span>First Class Free</span><span class="sep">—</span>
       <span>Personal Training</span><span class="sep">—</span>
       <span>Group Classes</span><span class="sep">—</span>
       <span>Cardio Boxing</span><span class="sep">—</span>
-      <span>Strength</span><span class="sep">—</span>
+      <span>No Commitment</span><span class="sep">—</span>
       <span>Yoga</span><span class="sep">—</span>
       <span>FIT@Work</span><span class="sep">—</span>
-      <span>Nutrition Coaching</span><span class="sep">—</span>
-      <span>J'peux pas j'ai Carlito</span><span class="sep">—</span>
+      <span>Try Before You Join</span><span class="sep">—</span>
       <span>Parc du Cinquantenaire</span><span class="sep">—</span>
     </div>
   </div>
@@ -1296,39 +1672,41 @@ footer {
 </div>
 
 <!-- ABOUT -->
-<section id="about" style="padding-left:60px;padding-right:60px;">
-  <div class="about-text reveal">
-    <div class="section-label">Our Story</div>
-    <h2 class="section-title">TRAIN<br>HARDER.<br>LIVE<br>BETTER.</h2>
-    <p>Born in the heart of Brussels's European Quarter, Carlito Sport is more than a gym — it's a community built on sweat, ambition, and mutual support. Whether you're taking your first step or crushing personal records, there's a place for you here.</p>
-    <p>With both indoor facilities at Avenue de Tervueren and outdoor sessions at the iconic Parc du Cinquantenaire athletics track, we bring training to life in every environment.</p>
-    <div class="about-quote">
-      <blockquote>"J'peux pas j'ai Carlito"</blockquote>
-      <cite>— The Carlito Sport Community</cite>
+<section id="about">
+  <div class="about-inner">
+    <div class="about-text reveal">
+      <div class="section-label">Our Story</div>
+      <h2 class="section-title">TRAIN<br>HARDER.<br>LIVE<br>BETTER.</h2>
+      <p>Born in the heart of Brussels's European Quarter, Carlito Sport is more than a gym — it's a community built on sweat, ambition, and mutual support. Whether you're taking your first step or crushing personal records, there's a place for you here.</p>
+      <p>With both indoor facilities at Avenue de Tervueren and outdoor sessions at the iconic Parc du Cinquantenaire athletics track, we bring training to life in every environment.</p>
+      <div class="about-quote">
+        <blockquote>"J'peux pas j'ai Carlito"</blockquote>
+        <cite>— The Carlito Sport Community</cite>
+      </div>
     </div>
-  </div>
-  <div class="about-visual reveal reveal-delay-2">
-    <div class="about-big-text">MOVE</div>
-    <div class="about-icon-grid">
-      <div class="icon-card">
-        <span class="ic-emoji"></span>
-        <div class="ic-title">Weight Training</div>
-        <div class="ic-desc">Build strength and muscle with expert-guided lifting programs.</div>
-      </div>
-      <div class="icon-card">
-        <span class="ic-emoji"></span>
-        <div class="ic-title">Boxing</div>
-        <div class="ic-desc">High-intensity cardio boxing for fitness and technique.</div>
-      </div>
-      <div class="icon-card">
-        <span class="ic-emoji"></span>
-        <div class="ic-title">Yoga</div>
-        <div class="ic-desc">Restore balance, flexibility, and mindfulness.</div>
-      </div>
-      <div class="icon-card">
-        <span class="ic-emoji"></span>
-        <div class="ic-title">Nutrition</div>
-        <div class="ic-desc">Personalised nutrition coaching to fuel your performance.</div>
+    <div class="about-visual reveal reveal-delay-2">
+      <div class="about-big-text">MOVE</div>
+      <div class="about-icon-grid">
+        <div class="icon-card">
+          <div class="ic-icon"></div>
+          <div class="ic-title">Weight Training</div>
+          <div class="ic-desc">Build strength and muscle with expert-guided lifting programs.</div>
+        </div>
+        <div class="icon-card">
+          <div class="ic-icon"></div>
+          <div class="ic-title">Boxing</div>
+          <div class="ic-desc">High-intensity cardio boxing for fitness and technique.</div>
+        </div>
+        <div class="icon-card">
+          <div class="ic-icon"></div>
+          <div class="ic-title">Yoga</div>
+          <div class="ic-desc">Restore balance, flexibility, and mindfulness.</div>
+        </div>
+        <div class="icon-card">
+          <div class="ic-icon"></div>
+          <div class="ic-title">Nutrition</div>
+          <div class="ic-desc">Personalised nutrition coaching to fuel your performance.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1344,91 +1722,81 @@ footer {
     <p class="reveal reveal-delay-2">Choose the format that fits your life — from dedicated 1-on-1 coaching to energetic group sessions and corporate wellness at the office.</p>
   </div>
   <div class="trainings-grid">
-    <div class="training-card reveal">
+    <a href="training.html#personal" class="training-card reveal" style="text-decoration:none;color:inherit;">
       <div class="training-number">01</div>
-      <div class="training-icon"></div>
       <div class="training-title">Personal Training</div>
       <div class="training-desc">Fully tailored 1-on-1 sessions designed around your specific goals, schedule, and fitness level. Maximum results, minimum wasted effort.</div>
-      <a href="#" class="training-link">Discover</a>
-    </div>
-    <div class="training-card reveal reveal-delay-1">
+      <span class="training-link">Discover</span>
+    </a>
+    <a href="training.html#small-group" class="training-card reveal reveal-delay-1" style="text-decoration:none;color:inherit;">
       <div class="training-number">02</div>
-      <div class="training-icon"></div>
       <div class="training-title">Small Group</div>
       <div class="training-desc">The best of both worlds — personalised attention within a motivating small group. Train alongside friends without losing that individual focus.</div>
-      <a href="#" class="training-link">Discover</a>
-    </div>
-    <div class="training-card reveal reveal-delay-2">
+      <span class="training-link">Discover</span>
+    </a>
+    <a href="training.html#group" class="training-card reveal reveal-delay-2" style="text-decoration:none;color:inherit;">
       <div class="training-number">03</div>
-      <div class="training-icon"></div>
       <div class="training-title">Group Training</div>
       <div class="training-desc">High-energy classes open to all fitness levels. The community energy pushes you further than you'd go alone. No experience required.</div>
-      <a href="#" class="training-link">Discover</a>
-    </div>
-    <div class="training-card reveal reveal-delay-3">
+      <span class="training-link">Discover</span>
+    </a>
+    <a href="training.html#fitwork" class="training-card reveal reveal-delay-3" style="text-decoration:none;color:inherit;">
       <div class="training-number">04</div>
-      <div class="training-icon"></div>
       <div class="training-title">FIT@Work</div>
       <div class="training-desc">Corporate wellness programs delivered at your office or our facilities. Improve team wellbeing, productivity, and cohesion.</div>
-      <a href="#" class="training-link">Discover</a>
-    </div>
+      <span class="training-link">Discover</span>
+    </a>
   </div>
 </section>
 
 <!-- CLASSES -->
-<section id="classes" style="padding-left:60px;padding-right:60px;max-width:none;">
-  <div style="max-width:1300px;margin:0 auto;">
-  <div class="classes-header">
-    <div>
-      <div class="section-label reveal">Schedule</div>
-      <h2 class="section-title reveal">OUR<br>CLASSES</h2>
+<section id="classes">
+  <div class="section-inner">
+    <div class="classes-header">
+      <div>
+        <div class="section-label reveal">Schedule</div>
+        <h2 class="section-title reveal">OUR<br>CLASSES</h2>
+      </div>
+      <a href="free-trial.html" class="btn-primary reveal reveal-delay-2" style="align-self:flex-end;">Try a Class Free</a>
     </div>
-    <a href="#" class="btn-primary reveal reveal-delay-2" style="align-self:flex-end;">View Full Schedule</a>
-  </div>
-  <div class="classes-grid">
-    <div class="class-card reveal">
-      <span class="class-emoji"></span>
-      <div class="class-bg-number">01</div>
-      <div class="class-name">Full Body Workout</div>
-      <div class="class-desc">Complete head-to-toe conditioning combining compound movements, core work, and cardio bursts for total fitness transformation.</div>
-      <div class="class-tag">All Levels</div>
+    <div class="classes-grid">
+      <div class="class-card reveal">
+        <div class="class-bg-number">01</div>
+        <div class="class-name">Full Body Workout</div>
+        <div class="class-desc">Complete head-to-toe conditioning combining compound movements, core work, and cardio bursts for total fitness transformation.</div>
+        <div class="class-tag">All Levels</div>
+      </div>
+      <div class="class-card reveal reveal-delay-1">
+        <div class="class-bg-number">02</div>
+        <div class="class-name">Cardio &amp; ABS</div>
+        <div class="class-desc">Burn calories, build core strength, and improve cardiovascular endurance with this targeted high-intensity session.</div>
+        <div class="class-tag">Intermediate</div>
+      </div>
+      <div class="class-card reveal reveal-delay-2">
+        <div class="class-bg-number">03</div>
+        <div class="class-name">Booty Sessions</div>
+        <div class="class-desc">Sculpt and strengthen the glutes, hamstrings, and lower body with progressive resistance and plyometric training.</div>
+        <div class="class-tag">All Levels</div>
+      </div>
+      <div class="class-card reveal reveal-delay-1">
+        <div class="class-bg-number">04</div>
+        <div class="class-name">Strength Training</div>
+        <div class="class-desc">Progressive overload programming to build functional strength, muscle, and power under expert coaching supervision.</div>
+        <div class="class-tag">All Levels</div>
+      </div>
+      <div class="class-card reveal reveal-delay-2">
+        <div class="class-bg-number">05</div>
+        <div class="class-name">Cardio Boxing</div>
+        <div class="class-desc">Channel your energy into a full-body cardio and coordination workout inspired by boxing technique. No fighting, all fitness.</div>
+        <div class="class-tag">Beginner Friendly</div>
+      </div>
+      <div class="class-card reveal reveal-delay-3">
+        <div class="class-bg-number">06</div>
+        <div class="class-name">Yoga</div>
+        <div class="class-desc">Find balance, flexibility, and mental clarity. The perfect complement to intense training — recovery and mindfulness in one.</div>
+        <div class="class-tag">All Levels</div>
+      </div>
     </div>
-    <div class="class-card reveal reveal-delay-1">
-      <span class="class-emoji"></span>
-      <div class="class-bg-number">02</div>
-      <div class="class-name">Cardio &amp; ABS</div>
-      <div class="class-desc">Burn calories, build core strength, and improve cardiovascular endurance with this targeted high-intensity session.</div>
-      <div class="class-tag">Intermediate</div>
-    </div>
-    <div class="class-card reveal reveal-delay-2">
-      <span class="class-emoji"></span>
-      <div class="class-bg-number">03</div>
-      <div class="class-name">Booty Sessions</div>
-      <div class="class-desc">Sculpt and strengthen the glutes, hamstrings, and lower body with progressive resistance and plyometric training.</div>
-      <div class="class-tag">All Levels</div>
-    </div>
-    <div class="class-card reveal reveal-delay-1">
-      <span class="class-emoji"></span>
-      <div class="class-bg-number">04</div>
-      <div class="class-name">Strength Training</div>
-      <div class="class-desc">Progressive overload programming to build functional strength, muscle, and power under expert coaching supervision.</div>
-      <div class="class-tag">All Levels</div>
-    </div>
-    <div class="class-card reveal reveal-delay-2">
-      <span class="class-emoji"></span>
-      <div class="class-bg-number">05</div>
-      <div class="class-name">Cardio Boxing</div>
-      <div class="class-desc">Channel your energy into a full-body cardio and coordination workout inspired by boxing technique. No fighting, all fitness.</div>
-      <div class="class-tag">Beginner Friendly</div>
-    </div>
-    <div class="class-card reveal reveal-delay-3">
-      <span class="class-emoji"></span>
-      <div class="class-bg-number">06</div>
-      <div class="class-name">Yoga</div>
-      <div class="class-desc">Find balance, flexibility, and mental clarity. The perfect complement to intense training — recovery and mindfulness in one.</div>
-      <div class="class-tag">All Levels</div>
-    </div>
-  </div>
   </div>
 </section>
 
@@ -1497,120 +1865,280 @@ footer {
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-header">
+    <div>
+      <div class="section-label reveal">Reviews</div>
+      <h2 class="section-title reveal">WHAT THEY<br>SAY</h2>
+    </div>
+    <div class="testimonials-meta reveal reveal-delay-2">5.0 — Based on 190+ Reviews</div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p class="testimonial-text">"Super nice coach and individual, very good training that is adapted to your needs. Would definitely recommend!"</p>
+      <div class="testimonial-footer">
+        <div class="testimonial-avatar">S</div>
+        <div>
+          <div class="testimonial-author">Stine Walter</div>
+          <div class="testimonial-source">Facebook Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-stars">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p class="testimonial-text">"I had fallen off my gym routine, then I discovered Carlito through Instagram. It completely changed everything — I'm back and stronger than ever."</p>
+      <div class="testimonial-footer">
+        <div class="testimonial-avatar">J</div>
+        <div>
+          <div class="testimonial-author">Jurate L.</div>
+          <div class="testimonial-source">Facebook Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-stars">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p class="testimonial-text">"Tried the Cinquantenaire class — absolutely brilliant atmosphere. Highly recommend to anyone looking to get moving in Brussels!"</p>
+      <div class="testimonial-footer">
+        <div class="testimonial-avatar">S</div>
+        <div>
+          <div class="testimonial-author">Samy B.</div>
+          <div class="testimonial-source">Facebook Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-stars">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p class="testimonial-text">"Professional coaches who really listen. The atmosphere is top-notch and the results speak for themselves. I recommend without hesitation!"</p>
+      <div class="testimonial-footer">
+        <div class="testimonial-avatar">R</div>
+        <div>
+          <div class="testimonial-author">Reda S.</div>
+          <div class="testimonial-source">Facebook Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-stars">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p class="testimonial-text">"A professional coach who knows his craft. Several people I know have worked with him and the results are incredible. Worth every session."</p>
+      <div class="testimonial-footer">
+        <div class="testimonial-avatar">W</div>
+        <div>
+          <div class="testimonial-author">Wan D.R. F.</div>
+          <div class="testimonial-source">Facebook Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-3">
+      <div class="testimonial-stars">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p class="testimonial-text">"Good classes, lots of options, and great fun! The outdoor sessions in the park are something special — unlike any gym experience I've had."</p>
+      <div class="testimonial-footer">
+        <div class="testimonial-avatar">C</div>
+        <div>
+          <div class="testimonial-author">Catríona M.</div>
+          <div class="testimonial-source">Facebook Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="testimonials-cta">
+    <a href="free-trial.html" class="btn-primary reveal">Join Them — Try a Free Class</a>
+    <span class="testimonials-cta-note reveal reveal-delay-1">No commitment. Just show up.</span>
+  </div>
+</section>
+
 <!-- MANIFESTO BANNER -->
 <section id="manifesto">
   <div class="manifesto-text reveal">
     "J'peux pas —<br>J'ai Carlito."
   </div>
   <p class="manifesto-sub reveal reveal-delay-1">The community. The commitment. The results.</p>
-  <a href="#" class="btn-primary reveal reveal-delay-2">Join the Community</a>
+  <div class="manifesto-actions">
+    <a href="free-trial.html" class="btn-primary reveal reveal-delay-2">Claim Your Free Class</a>
+    <a href="#contact" class="btn-secondary reveal reveal-delay-3">Get in Touch</a>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-header">
+    <div>
+      <div class="section-label reveal">Pricing</div>
+      <h2 class="section-title reveal">START<br>FOR FREE</h2>
+    </div>
+    <p class="reveal reveal-delay-2">Your first class is always free. No credit card, no commitment — just come and experience it for yourself.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card featured reveal">
+      <div class="pricing-card-eyebrow">Best Way to Start</div>
+      <div class="pricing-card-name">Free Trial</div>
+      <div class="pricing-card-price">
+        <div class="pricing-amount">FREE</div>
+        <div class="pricing-period">Your very first class</div>
+      </div>
+      <ul class="pricing-features">
+        <li>1 full group class of your choice</li>
+        <li>Free parking on site</li>
+        <li>No credit card required</li>
+        <li>Personal welcome from your coach</li>
+        <li>Zero commitment — try it once</li>
+      </ul>
+      <a href="free-trial.html" class="btn-primary">Claim Free Class</a>
+    </div>
+    <div class="pricing-card reveal reveal-delay-1">
+      <div class="pricing-card-eyebrow">Community</div>
+      <div class="pricing-card-name">Group Training</div>
+      <div class="pricing-card-price">
+        <div class="pricing-amount" style="font-size:2.8rem;color:var(--white);">Ask us</div>
+        <div class="pricing-period">Flexible passes available</div>
+      </div>
+      <ul class="pricing-features">
+        <li>All 6 class types included</li>
+        <li>Indoor &amp; outdoor sessions</li>
+        <li>Community of 500+ members</li>
+        <li>Mon–Sun flexible scheduling</li>
+        <li>Book via BSport app</li>
+      </ul>
+      <a href="pricing.html" class="btn-secondary">See Packages</a>
+    </div>
+    <div class="pricing-card reveal reveal-delay-2">
+      <div class="pricing-card-eyebrow">Premium</div>
+      <div class="pricing-card-name">Personal Coaching</div>
+      <div class="pricing-card-price">
+        <div class="pricing-amount" style="font-size:2.8rem;color:var(--white);">Custom</div>
+        <div class="pricing-period">Tailored to your goals</div>
+      </div>
+      <ul class="pricing-features">
+        <li>1-on-1 with an expert coach</li>
+        <li>Fully personalised program</li>
+        <li>Nutrition coaching included</li>
+        <li>Progress tracking &amp; analysis</li>
+        <li>Flexible session times</li>
+      </ul>
+      <a href="pricing.html" class="btn-secondary">Get Pricing</a>
+    </div>
+  </div>
+  <p class="pricing-note reveal">All packages bookable via BSport or Reservio. Contact us for corporate &amp; group rates.</p>
 </section>
 
 <!-- CONTACT & LOCATIONS -->
-<section id="contact" style="padding-left:60px;padding-right:60px;max-width:none;">
-  <div style="max-width:1300px;margin:0 auto;">
-  <div class="section-label reveal">Find Us</div>
-  <h2 class="section-title reveal">LOCATIONS<br>&amp; CONTACT</h2>
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label reveal">Find Us</div>
+    <h2 class="section-title reveal">LOCATIONS<br>&amp; CONTACT</h2>
 
-  <div class="contact-grid">
-    <div>
-      <div class="contact-block">
-        <h3>Training Locations</h3>
-        <div class="location-item reveal">
-          <div class="loc-type">Indoor</div>
-          <div class="loc-name">Carlito Sport HQ</div>
-          <div class="loc-address">Avenue de Tervueren 32–34<br>Etterbeek, Brussels</div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-block">
+          <h3>Training Locations</h3>
+          <div class="location-item reveal">
+            <div class="loc-type">Indoor</div>
+            <div class="loc-name">Carlito Sport HQ</div>
+            <div class="loc-address">Avenue de Tervueren 32–34<br>Etterbeek, Brussels</div>
+          </div>
+          <div class="location-item reveal reveal-delay-1">
+            <div class="loc-type">Outdoor</div>
+            <div class="loc-name">Parc du Cinquantenaire</div>
+            <div class="loc-address">Athletics Track, Avenue De La Renaissance<br>Etterbeek, Brussels</div>
+          </div>
+          <div class="map-placeholder reveal reveal-delay-2">
+            <div class="map-pin">
+              <div class="map-pin-icon">&#9679;</div>
+              <span>Parc du Cinquantenaire</span>
+            </div>
+          </div>
         </div>
-        <div class="location-item reveal reveal-delay-1">
-          <div class="loc-type">Outdoor</div>
-          <div class="loc-name">Parc du Cinquantenaire</div>
-          <div class="loc-address">Athletics Track, Avenue De La Renaissance<br>Etterbeek, Brussels</div>
-        </div>
-        <div class="map-placeholder reveal reveal-delay-2">
-          <div class="map-pin">
-            <span class="map-pin-icon"></span>
-            <span>Parc du Cinquantenaire</span>
+
+        <div class="contact-block" style="margin-top:36px;">
+          <h3>Opening Hours</h3>
+          <div class="hours-card reveal">
+            <div class="hours-row">
+              <span class="hours-day">Monday – Friday</span>
+              <span class="hours-time">6:00 – 22:00</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Saturday</span>
+              <span class="hours-time">7:00 – 20:00</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Sunday</span>
+              <span class="hours-time">8:00 – 18:00</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="contact-block" style="margin-top:36px;">
-        <h3>Opening Hours</h3>
-        <div class="hours-card reveal">
-          <div class="hours-row">
-            <span class="hours-day">Monday – Friday</span>
-            <span class="hours-time">6:00 – 22:00</span>
+      <div>
+        <div class="contact-block">
+          <h3>Get in Touch</h3>
+          <div class="contact-info">
+            <a href="tel:+32495315244" class="contact-item reveal">
+              <div class="ci-icon">TEL</div>
+              <div>
+                <div class="ci-label">Phone</div>
+                <div class="ci-value">+32 495 31 52 44</div>
+              </div>
+            </a>
+            <a href="mailto:info@carlitosport.com" class="contact-item reveal reveal-delay-1">
+              <div class="ci-icon">@</div>
+              <div>
+                <div class="ci-label">Email</div>
+                <div class="ci-value">info@carlitosport.com</div>
+              </div>
+            </a>
+            <a href="https://wa.me/32495315244" class="contact-item reveal reveal-delay-2">
+              <div class="ci-icon">WA</div>
+              <div>
+                <div class="ci-label">WhatsApp</div>
+                <div class="ci-value">Message us directly</div>
+              </div>
+            </a>
+            <a href="https://instagram.com/carlito.sport" class="contact-item reveal reveal-delay-3">
+              <div class="ci-icon">IG</div>
+              <div>
+                <div class="ci-label">Instagram</div>
+                <div class="ci-value">@carlito.sport</div>
+              </div>
+            </a>
+            <a href="https://www.facebook.com/people/Carlitosport/100063621079017/" class="contact-item reveal reveal-delay-4">
+              <div class="ci-icon">FB</div>
+              <div>
+                <div class="ci-label">Facebook</div>
+                <div class="ci-value">Carlitosport</div>
+              </div>
+            </a>
+            <a href="https://www.tiktok.com/@carlitosport" class="contact-item reveal reveal-delay-5">
+              <div class="ci-icon">TK</div>
+              <div>
+                <div class="ci-label">TikTok</div>
+                <div class="ci-value">@carlitosport</div>
+              </div>
+            </a>
           </div>
-          <div class="hours-row">
-            <span class="hours-day">Saturday</span>
-            <span class="hours-time">7:00 – 20:00</span>
-          </div>
-          <div class="hours-row">
-            <span class="hours-day">Sunday</span>
-            <span class="hours-time">8:00 – 18:00</span>
+        </div>
+
+        <div class="contact-block" style="margin-top:36px;">
+          <h3>Book a Session</h3>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <a href="free-trial.html" class="btn-primary reveal" style="text-align:center;display:block;padding:20px 40px;">Try Your First Class Free</a>
+            <a href="https://backoffice.bsport.io/m/Carlitosport/2577/calendar/?isPreview=true" target="_blank" class="btn-secondary reveal reveal-delay-1" style="text-align:center;display:block;padding:20px 40px;">Book on BSport</a>
           </div>
         </div>
       </div>
     </div>
-
-    <div>
-      <div class="contact-block">
-        <h3>Get in Touch</h3>
-        <div class="contact-info">
-          <a href="tel:+32495315244" class="contact-item reveal">
-            <span class="ci-icon"></span>
-            <div>
-              <div class="ci-label">Phone</div>
-              <div class="ci-value">+32 495 31 52 44</div>
-            </div>
-          </a>
-          <a href="mailto:info@carlitosport.com" class="contact-item reveal reveal-delay-1">
-            <span class="ci-icon"></span>
-            <div>
-              <div class="ci-label">Email</div>
-              <div class="ci-value">info@carlitosport.com</div>
-            </div>
-          </a>
-          <a href="https://wa.me/32495315244" class="contact-item reveal reveal-delay-2">
-            <span class="ci-icon"></span>
-            <div>
-              <div class="ci-label">WhatsApp</div>
-              <div class="ci-value">Message us directly</div>
-            </div>
-          </a>
-          <a href="https://instagram.com/carlito.sport" class="contact-item reveal reveal-delay-3">
-            <span class="ci-icon"></span>
-            <div>
-              <div class="ci-label">Instagram</div>
-              <div class="ci-value">@carlito.sport</div>
-            </div>
-          </a>
-          <a href="#" class="contact-item reveal reveal-delay-4">
-            <span class="ci-icon"></span>
-            <div>
-              <div class="ci-label">Facebook</div>
-              <div class="ci-value">Carlitosport</div>
-            </div>
-          </a>
-          <a href="#" class="contact-item reveal reveal-delay-5">
-            <span class="ci-icon"></span>
-            <div>
-              <div class="ci-label">TikTok</div>
-              <div class="ci-value">@carlitosport</div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="contact-block" style="margin-top:36px;">
-        <h3>Book a Session</h3>
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <a href="#" class="btn-primary reveal" style="text-align:center;display:block;padding:20px 40px;">Book via Reservio</a>
-          <a href="#" class="btn-secondary reveal reveal-delay-1" style="text-align:center;display:block;padding:20px 40px;">Book via BSport</a>
-        </div>
-      </div>
-    </div>
-  </div>
   </div>
 </section>
 
@@ -1619,25 +2147,26 @@ footer {
   <span class="social-label">Follow the journey</span>
   <div class="social-links">
     <a href="https://instagram.com/carlito.sport" class="social-link">Instagram</a>
-    <a href="#" class="social-link">Facebook</a>
-    <a href="#" class="social-link">TikTok</a>
-    <a href="#" class="social-link">LinkedIn</a>
+    <a href="https://www.facebook.com/people/Carlitosport/100063621079017/" class="social-link">Facebook</a>
+    <a href="https://www.tiktok.com/@carlitosport" class="social-link">TikTok</a>
+    <a href="https://www.linkedin.com/in/carlito-sport-32bb74149/" class="social-link">LinkedIn</a>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">CARLITO<span>.</span>SPORT</div>
-  <p class="footer-copy">© 2024 Carlito Sport. Brussels, European Quarter.</p>
+  <p class="footer-copy">&copy; 2024 Carlito Sport. Brussels, European Quarter.</p>
   <ul class="footer-links">
-    <li><a href="#">Privacy</a></li>
-    <li><a href="#">Terms</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="training.html">Training</a></li>
+    <li><a href="free-trial.html">Free Trial</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </footer>
 
 <script>
-//  CUSTOM CURSOR 
+//  CUSTOM CURSOR
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -1655,12 +2184,12 @@ function animateRing() {
 }
 animateRing();
 
-document.querySelectorAll('a, button, .training-card, .class-card, .trainer-card, .stat-card').forEach(el => {
+document.querySelectorAll('a, button, .training-card, .class-card, .trainer-card, .stat-card, .testimonial-card, .pricing-card').forEach(el => {
   el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
   el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
 });
 
-//  HERO CANVAS 
+//  HERO CANVAS
 const canvas = document.getElementById('hero-canvas');
 const ctx = canvas.getContext('2d');
 let W, H, particles = [];
@@ -1681,7 +2210,9 @@ class Particle {
     this.vy = (Math.random() - 0.5) * 0.4;
     this.r = Math.random() * 1.5 + 0.5;
     this.alpha = Math.random() * 0.5 + 0.1;
-    this.color = Math.random() > 0.7 ? `rgba(255,${Math.floor(Math.random()*50)},0,${this.alpha})` : `rgba(245,245,240,${this.alpha * 0.4})`;
+    this.color = Math.random() > 0.7
+      ? `rgba(255,${Math.floor(Math.random()*50)},0,${this.alpha})`
+      : `rgba(245,245,240,${this.alpha * 0.4})`;
   }
   update() {
     this.x += this.vx; this.y += this.vy;
@@ -1720,27 +2251,24 @@ function drawConnections() {
 
 function loop() {
   ctx.clearRect(0, 0, W, H);
-
-  // Gradient bg
   const grad = ctx.createRadialGradient(W*0.3, H*0.6, 0, W*0.3, H*0.6, W*0.7);
   grad.addColorStop(0, 'rgba(255,69,0,0.06)');
   grad.addColorStop(1, 'rgba(8,8,8,0)');
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, W, H);
-
   drawConnections();
   particles.forEach(p => { p.update(); p.draw(); });
   requestAnimationFrame(loop);
 }
 loop();
 
-//  NAVBAR 
+//  NAVBAR
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
 });
 
-//  HAMBURGER 
+//  HAMBURGER
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 hamburger.addEventListener('click', () => {
@@ -1756,18 +2284,16 @@ document.querySelectorAll('.mobile-nav-link').forEach(link => {
   });
 });
 
-//  SCROLL REVEAL 
+//  SCROLL REVEAL
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-//  COUNT UP 
+//  COUNT UP
 function countUp(el, target, suffix = '') {
   let start = 0;
   const duration = 1800;

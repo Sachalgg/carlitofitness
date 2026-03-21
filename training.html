@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training Programs — Carlito Sport Brussels</title>
+<meta name="description" content="Personal training, small group, group classes, and FIT@Work programs at Carlito Sport Brussels. Try your first session free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #080808; --bg2: #0f0f0f; --bg3: #141414;
+  --orange: #FF4500; --orange2: #FF6B35;
+  --orange-glow: rgba(255,69,0,0.35);
+  --white: #f5f5f0; --muted: rgba(245,245,240,0.45);
+  --border: rgba(255,255,255,0.07);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-ui: 'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { background: var(--bg); color: var(--white); font-family: var(--font-body); overflow-x: hidden; cursor: none; }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.03; pointer-events: none; z-index: 9997;
+}
+
+.cursor { width: 12px; height: 12px; background: var(--orange); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; }
+.cursor-ring { width: 40px; height: 40px; border: 1.5px solid var(--orange); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), width 0.3s, height 0.3s, opacity 0.3s; opacity: 0.6; }
+.cursor.hover { transform: scale(2.5); }
+.cursor-ring.hover { width: 60px; height: 60px; opacity: 0.3; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 28px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  padding: 16px 60px;
+  background: rgba(8,8,8,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: var(--font-display); font-size: 2rem; letter-spacing: 0.05em; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.nav-logo span { color: var(--orange); }
+.logo-dot { width: 8px; height: 8px; background: var(--orange); border-radius: 50%; display: inline-block; animation: pulse-dot 2s infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.7);} }
+
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a { font-family: var(--font-ui); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; position: relative; }
+.nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--orange); transition:width 0.3s ease; }
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--white); }
+.nav-links a.active::after { width: 100%; }
+.nav-cta { background: var(--orange) !important; color: var(--white) !important; padding: 10px 24px !important; font-weight: 700 !important; clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%); transition: background 0.2s !important; }
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--orange2) !important; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 28px; height: 2px; background: var(--white); transition: all 0.3s ease; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+.mobile-menu { display: none; position: fixed; inset: 0; background: rgba(8,8,8,0.97); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 28px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-family: var(--font-display); font-size: clamp(2.5rem,8vw,4rem); color: var(--white); text-decoration: none; transition: color 0.2s; }
+.mobile-menu a:hover { color: var(--orange); }
+.mobile-menu .mobile-cta { font-family: var(--font-ui); font-size: 1.2rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); background: var(--orange); padding: 14px 36px; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); margin-top: 8px; }
+
+/* PAGE HERO */
+.page-hero {
+  padding: 180px 60px 100px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.page-hero::before {
+  content: 'TRAIN';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(10rem, 22vw, 20rem);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.03);
+  white-space: nowrap;
+  pointer-events: none; user-select: none;
+}
+.page-hero-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 1; }
+.page-label { font-family: var(--font-ui); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+.page-label::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--orange); }
+.page-title { font-family: var(--font-display); font-size: clamp(4rem, 10vw, 9rem); line-height: 0.9; letter-spacing: -0.01em; margin-bottom: 28px; }
+.page-sub { font-size: 1.15rem; line-height: 1.75; color: rgba(245,245,240,0.65); max-width: 640px; }
+
+/* TRAINING TABS */
+.training-tabs-wrap {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 72px;
+  z-index: 100;
+}
+.training-tabs {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.training-tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 20px 32px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tab-btn:hover { color: var(--white); }
+.tab-btn.active { color: var(--orange); border-bottom-color: var(--orange); }
+
+/* TRAINING SECTIONS */
+.training-section {
+  display: none;
+  padding: 100px 60px;
+}
+.training-section.active { display: block; }
+
+section { padding: 0; }
+
+.ts-inner { max-width: 1300px; margin: 0 auto; }
+
+.ts-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 80px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid var(--border);
+}
+.ts-eyebrow { font-family: var(--font-ui); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.ts-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--orange); }
+.ts-title { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 6.5rem); line-height: 0.9; margin-bottom: 0; }
+.ts-desc { font-size: 1.05rem; line-height: 1.8; color: rgba(245,245,240,0.7); margin-bottom: 28px; }
+.ts-desc:last-of-type { margin-bottom: 36px; }
+
+.ts-perks {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.ts-perk {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ts-perk::before { content: ''; width: 5px; height: 5px; background: var(--orange); border-radius: 50%; }
+
+/* FEATURES GRID */
+.ts-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-bottom: 80px;
+}
+.ts-feature {
+  background: var(--bg2);
+  padding: 36px 28px;
+}
+.ts-feature-num { font-family: var(--font-display); font-size: 2rem; color: rgba(255,255,255,0.06); line-height: 1; margin-bottom: 16px; }
+.ts-feature-title { font-family: var(--font-ui); font-size: 1rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 10px; }
+.ts-feature-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+/* STEPS */
+.ts-steps-title { font-family: var(--font-ui); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange); margin-bottom: 32px; display: flex; align-items: center; gap: 12px; }
+.ts-steps-title::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--orange); }
+.ts-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-bottom: 80px; }
+.ts-step { background: var(--bg); padding: 40px 32px; }
+.ts-step-num { font-family: var(--font-display); font-size: 3.5rem; color: var(--orange); line-height: 1; margin-bottom: 16px; opacity: 0.6; }
+.ts-step-title { font-family: var(--font-ui); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 10px; }
+.ts-step-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+/* CTA BLOCK */
+.ts-cta {
+  background: var(--orange);
+  padding: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.ts-cta-text { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: 0.02em; }
+.btn-primary { font-family: var(--font-ui); font-weight: 700; font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); background: var(--bg); padding: 16px 40px; text-decoration: none; clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%); transition: background 0.25s, transform 0.2s, box-shadow 0.3s; display: inline-block; }
+.btn-primary:hover { background: var(--bg2); transform: translateY(-2px); }
+.btn-secondary { font-family: var(--font-ui); font-weight: 700; font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); background: transparent; padding: 15px 40px; border: 1px solid rgba(255,255,255,0.4); text-decoration: none; clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%); transition: border-color 0.25s, background 0.25s, transform 0.2s; display: inline-block; }
+.btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+.cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* TYPE CARDS (all trainings overview) */
+.training-types {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-bottom: 80px;
+}
+.type-card {
+  background: var(--bg2);
+  padding: 40px 32px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.3s;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.type-card:hover { background: var(--bg3); }
+.type-card:hover .type-arrow { gap: 14px; }
+.type-num { font-family: var(--font-display); font-size: 3rem; color: rgba(255,255,255,0.06); line-height: 1; }
+.type-name { font-family: var(--font-ui); font-size: 1.4rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; }
+.type-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.65; flex: 1; }
+.type-arrow { display: flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-top: auto; transition: gap 0.2s; }
+.type-arrow::after { content: '→'; }
+
+/* Outdoor/Indoor badges */
+.location-badges { display: flex; gap: 8px; margin-bottom: 20px; }
+.badge { font-family: var(--font-ui); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 12px; border: 1px solid; }
+.badge-outdoor { color: var(--orange); border-color: var(--orange); }
+.badge-indoor { color: var(--muted); border-color: var(--border); }
+
+/* FOOTER */
+footer { padding: 40px 60px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; background: var(--bg); }
+.footer-logo { font-family: var(--font-display); font-size: 1.6rem; color: var(--white); }
+.footer-logo span { color: var(--orange); }
+.footer-copy { font-family: var(--font-ui); font-size: 0.8rem; letter-spacing: 0.08em; color: var(--muted); }
+.footer-links { display: flex; gap: 24px; list-style: none; }
+.footer-links a { font-family: var(--font-ui); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--orange); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+@media (max-width: 900px) {
+  nav { padding: 24px 32px; }
+  nav.scrolled { padding: 16px 32px; }
+  .page-hero { padding: 140px 32px 72px; }
+  .training-section { padding: 60px 32px; }
+  .ts-header { grid-template-columns: 1fr; gap: 40px; }
+  .ts-features { grid-template-columns: repeat(2, 1fr); }
+  .ts-steps { grid-template-columns: 1fr; }
+  .training-types { grid-template-columns: repeat(2, 1fr); }
+  .ts-cta { flex-direction: column; align-items: flex-start; padding: 40px 32px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  footer { padding: 32px; flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  .page-hero { padding: 120px 20px 60px; }
+  .training-section { padding: 48px 20px; }
+  .ts-features { grid-template-columns: 1fr; }
+  .training-types { grid-template-columns: 1fr; }
+  .tab-btn { padding: 16px 20px; font-size: 0.75rem; }
+  footer { padding: 24px 20px; }
+  .footer-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="training.html" class="mobile-nav-link">Training</a>
+  <a href="index.html#classes" class="mobile-nav-link">Classes</a>
+  <a href="index.html#trainers" class="mobile-nav-link">Trainers</a>
+  <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+  <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+  <a href="free-trial.html" class="mobile-cta mobile-nav-link">Try for Free</a>
+</div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">CARLITO<span>.</span>SPORT <div class="logo-dot"></div></a>
+  <ul class="nav-links">
+    <li><a href="training.html" class="active">Training</a></li>
+    <li><a href="index.html#classes">Classes</a></li>
+    <li><a href="index.html#trainers">Trainers</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="free-trial.html" class="nav-cta">Free Trial</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-label">Brussels — European Quarter</div>
+    <h1 class="page-title">TRAINING<br>PROGRAMS</h1>
+    <p class="page-sub">From 1-on-1 personal coaching to high-energy group classes and corporate wellness — there's a format built for exactly where you are right now.</p>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="training-tabs-wrap">
+  <div class="training-tabs">
+    <button class="tab-btn active" data-tab="overview">All Programs</button>
+    <button class="tab-btn" data-tab="personal">Personal Training</button>
+    <button class="tab-btn" data-tab="small-group">Small Group</button>
+    <button class="tab-btn" data-tab="group">Group Training</button>
+    <button class="tab-btn" data-tab="fitwork">FIT@Work</button>
+  </div>
+</div>
+
+<!-- OVERVIEW TAB -->
+<div id="tab-overview" class="training-section active">
+  <div class="ts-inner">
+    <div class="training-types">
+      <a href="#" class="type-card" data-switch="personal">
+        <div class="type-num">01</div>
+        <div class="type-name">Personal Training</div>
+        <div class="type-desc">Fully tailored 1-on-1 sessions designed around your specific goals, schedule, and fitness level. Maximum results, minimum wasted effort.</div>
+        <div class="type-arrow">Learn More</div>
+      </a>
+      <a href="#" class="type-card" data-switch="small-group">
+        <div class="type-num">02</div>
+        <div class="type-name">Small Group</div>
+        <div class="type-desc">The best of both worlds — personalised attention within a motivating small group. Train alongside people who push you further.</div>
+        <div class="type-arrow">Learn More</div>
+      </a>
+      <a href="#" class="type-card" data-switch="group">
+        <div class="type-num">03</div>
+        <div class="type-name">Group Training</div>
+        <div class="type-desc">High-energy classes open to all fitness levels. The community energy takes you further than you'd ever go alone.</div>
+        <div class="type-arrow">Learn More</div>
+      </a>
+      <a href="#" class="type-card" data-switch="fitwork">
+        <div class="type-num">04</div>
+        <div class="type-name">FIT@Work</div>
+        <div class="type-desc">Corporate wellness programs delivered at your office or our facilities. Improve team wellbeing, productivity, and cohesion.</div>
+        <div class="type-arrow">Learn More</div>
+      </a>
+    </div>
+
+    <div class="ts-cta">
+      <div class="ts-cta-text">Not sure which<br>program is right for you?</div>
+      <div class="cta-btns">
+        <a href="free-trial.html" class="btn-primary">Try a Class Free</a>
+        <a href="index.html#contact" class="btn-secondary">Talk to a Coach</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PERSONAL TRAINING TAB -->
+<div id="tab-personal" class="training-section">
+  <div class="ts-inner">
+    <div class="ts-header">
+      <div>
+        <div class="ts-eyebrow">01 — Personal Training</div>
+        <h2 class="ts-title">YOUR BODY.<br>YOUR PLAN.<br>YOUR RESULTS.</h2>
+      </div>
+      <div>
+        <div class="location-badges">
+          <span class="badge badge-indoor">Indoor</span>
+          <span class="badge badge-outdoor">Outdoor</span>
+        </div>
+        <p class="ts-desc">Whether you have specific fitness and weight loss goals or simply want to feel stronger and healthier — whether you're just starting out or you're a professional athlete — our personal training service gives you everything you need to achieve the body transformation you're looking for.</p>
+        <p class="ts-desc">Your sessions are private and held with a fully-equipped, dedicated coach who understands you, your level, your goals, and exactly how to help you push to the next level.</p>
+        <div class="ts-perks">
+          <span class="ts-perk">Free Parking</span>
+          <span class="ts-perk">Free Fruit</span>
+          <span class="ts-perk">Shower Available</span>
+          <span class="ts-perk">Nutrition Coaching</span>
+        </div>
+        <a href="free-trial.html" class="btn-primary">Book a Free Consultation</a>
+      </div>
+    </div>
+
+    <div class="ts-features">
+      <div class="ts-feature">
+        <div class="ts-feature-num">01</div>
+        <div class="ts-feature-title">Fully Tailored</div>
+        <div class="ts-feature-desc">Every session is built around your specific goals, starting level, and schedule. No generic plans.</div>
+      </div>
+      <div class="ts-feature">
+        <div class="ts-feature-num">02</div>
+        <div class="ts-feature-title">Expert Coaching</div>
+        <div class="ts-feature-desc">Train with certified coaches who combine technical knowledge with real motivation to keep you progressing.</div>
+      </div>
+      <div class="ts-feature">
+        <div class="ts-feature-num">03</div>
+        <div class="ts-feature-title">Indoor &amp; Outdoor</div>
+        <div class="ts-feature-desc">Train at our Avenue de Tervueren facility or take your session outdoors to the Parc du Cinquantenaire athletics track.</div>
+      </div>
+      <div class="ts-feature">
+        <div class="ts-feature-num">04</div>
+        <div class="ts-feature-title">Nutrition Support</div>
+        <div class="ts-feature-desc">Complement your training with personalised nutrition coaching to fuel performance and accelerate your results.</div>
+      </div>
+    </div>
+
+    <div class="ts-steps-title">Getting Started</div>
+    <div class="ts-steps">
+      <div class="ts-step">
+        <div class="ts-step-num">01</div>
+        <div class="ts-step-title">Get in Touch</div>
+        <div class="ts-step-desc">Contact us and we'll have a no-obligation chat about your goals, lifestyle, and what you're hoping to achieve.</div>
+      </div>
+      <div class="ts-step">
+        <div class="ts-step-num">02</div>
+        <div class="ts-step-title">Free Consultation</div>
+        <div class="ts-step-desc">We'll plan a completely pressure-free visit to our studio — working around your schedule to find the perfect time.</div>
+      </div>
+      <div class="ts-step">
+        <div class="ts-step-num">03</div>
+        <div class="ts-step-title">Achieve Your Goals</div>
+        <div class="ts-step-desc">We'll build a personalised plan together and get to work on taking you further than you thought possible.</div>
+      </div>
+    </div>
+
+    <div class="ts-cta">
+      <div class="ts-cta-text">Ready to get<br>started? First session<br>is on us.</div>
+      <div class="cta-btns">
+        <a href="free-trial.html" class="btn-primary">Book Free Session</a>
+        <a href="index.html#contact" class="btn-secondary">Ask a Question</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SMALL GROUP TAB -->
+<div id="tab-small-group" class="training-section">
+  <div class="ts-inner">
+    <div class="ts-header">
+      <div>
+        <div class="ts-eyebrow">02 — Small Group Training</div>
+        <h2 class="ts-title">BETTER<br>TOGETHER.<br>STILL YOU.</h2>
+      </div>
+      <div>
+        <div class="location-badges">
+          <span class="badge badge-indoor">Indoor</span>
+          <span class="badge badge-outdoor">Outdoor</span>
+        </div>
+        <p class="ts-desc">Designed to make workouts dynamic and keep you coming back for more, Small Group Training provides all the building blocks of long-term fitness. More cost-effective than 1-on-1, but with far more personal attention than a typical group class.</p>
+        <p class="ts-desc">Because we run sessions every day, you're more likely to find a slot that works for you. Choose between full body, cardio, or booty sessions. Train with a small circle who push each other without losing that individual focus.</p>
+        <div class="ts-perks">
+          <span class="ts-perk">3–6 People Max</span>
+          <span class="ts-perk">Daily Sessions</span>
+          <span class="ts-perk">Indoor &amp; Outdoor</span>
+          <span class="ts-perk">Flexible Scheduling</span>
+        </div>
+        <a href="free-trial.html" class="btn-primary">Try a Free Session</a>
+      </div>
+    </div>
+
+    <div class="ts-features">
+      <div class="ts-feature">
+        <div class="ts-feature-num">01</div>
+        <div class="ts-feature-title">Personal Attention</div>
+        <div class="ts-feature-desc">Small groups mean your coach can correct your form, adjust intensity, and actually know your name.</div>
+      </div>
+      <div class="ts-feature">
+        <div class="ts-feature-num">02</div>
+        <div class="ts-feature-title">Better Value</div>
+        <div class="ts-feature-desc">More cost-effective than 1-on-1 personal training, with most of the same benefits and added social energy.</div>
+      </div>
+      <div class="ts-feature">
+        <div class="ts-feature-num">03</div>
+        <div class="ts-feature-title">Accountability</div>
+        <div class="ts-feature-desc">A small group creates real bonds. You'll show up because people are counting on you — and you on them.</div>
+      </div>
+      <div class="ts-feature">
+        <div class="ts-feature-num">04</div>
+        <div class="ts-feature-title">Varied Formats</div>
+        <div class="ts-feature-desc">Full body conditioning, cardio sessions, or lower body focus — choose what suits your goals on any given day.</div>
+      </div>
+    </div>
+
+    <div class="ts-cta">
+      <div class="ts-cta-text">Train with friends.<br>Your first session<br>is always free.</div>
+      <div class="cta-btns">
+        <a href="free-trial.html" class="btn-primary">Claim Free Session</a>
+        <a href="index.html#contact" class="btn-secondary">Learn More</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GROUP TRAINING TAB -->
+<div id="tab-group" class="training-section">
+  <div class="ts-inner">
+    <div class="ts-header">
+      <div>
+        <div class="ts-eyebrow">03 — Group Training</div>
+        <h2 class="ts-title">THE ENERGY<br>OF THE<br>CROWD.</h2>
+      </div>
+      <div>
+        <div class="location-badges">
+          <span class="badge badge-outdoor">Outdoor</span>
+          <span class="badge badge-indoor">Indoor</span>
+        </div>
+        <p class="ts-desc">Group training will prepare you for anything life throws your way. Each day you'll do a challenging workout that combines the most effective fitness methods. No experience required — just show up.</p>
+        <p class="ts-desc">Our classes build lasting community relationships that keep you accountable and make working out genuinely fun. Your classmates push you further than you'd ever go alone — and they'll be there to celebrate your wins too.</p>
+        <div class="ts-perks">
+          <span class="ts-perk">All Levels Welcome</span>
+          <span class="ts-perk">6 Class Types</span>
+          <span class="ts-perk">Mon–Sun</span>
+          <span class="ts-perk">Community</span>
+        </div>
+        <a href="free-trial.html" class="btn-primary">Try Your First Class Free</a>
+      </div>
+    </div>
+
+    <div class="ts-features">
+      <div class="ts-feature">
+        <div class="ts-feature-num">01</div>
+        <div class="ts-feature-title">Expert Coaches</div>
+        <div class="ts-feature-desc">All coaches pass a rigorous certification process before leading classes — so you stay safe, injury-free, and constantly progressing.</div>
+      </div>
+      <div class="ts-feature">
+        <div class="ts-feature-num">02</div>
+        <div class="ts-feature-title">Actually Fun</div>
+        <div class="ts-feature-desc">After a few classes, you'll find that our workouts feel like a game. Many members say they look forward to the gym for the first time in their life.</div>
+      </div>
+      <div class="ts-feature">
+        <div class="ts-feature-num">03</div>
+        <div class="ts-feature-title">Community</div>
+        <div class="ts-feature-desc">An instant network of training partners to hold you accountable and cheer you on when the going gets tough.</div>
+      </div>
+      <div class="ts-feature">
+        <div class="ts-feature-num">04</div>
+        <div class="ts-feature-title">Real Results</div>
+        <div class="ts-feature-desc">Our routines are constantly varied so you can stick to them for years without plateauing. Consistency = the results you're looking for.</div>
+      </div>
+    </div>
+
+    <div class="ts-steps-title">Available Classes</div>
+    <div class="ts-steps">
+      <div class="ts-step">
+        <div class="ts-step-num">FBW</div>
+        <div class="ts-step-title">Full Body Workout</div>
+        <div class="ts-step-desc">Compound movements, core work, and cardio bursts for total fitness transformation. The most complete session we offer.</div>
+      </div>
+      <div class="ts-step">
+        <div class="ts-step-num">BOX</div>
+        <div class="ts-step-title">Cardio Boxing</div>
+        <div class="ts-step-desc">High-intensity boxing-inspired cardio. Full-body coordination, calorie burn, and stress relief. No fighting — all fitness.</div>
+      </div>
+      <div class="ts-step">
+        <div class="ts-step-num">YOG</div>
+        <div class="ts-step-title">Yoga</div>
+        <div class="ts-step-desc">Outdoor yoga sessions in the Parc du Cinquantenaire. Balance, flexibility, and mindfulness in nature.</div>
+      </div>
+    </div>
+
+    <div class="ts-cta">
+      <div class="ts-cta-text">500+ members<br>already training.<br>Your first class is free.</div>
+      <div class="cta-btns">
+        <a href="free-trial.html" class="btn-primary">Join the Community</a>
+        <a href="index.html#classes" class="btn-secondary">View All Classes</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FIT@WORK TAB -->
+<div id="tab-fitwork" class="training-section">
+  <div class="ts-inner">
+    <div class="ts-header">
+      <div>
+        <div class="ts-eyebrow">04 — FIT@Work</div>
+        <h2 class="ts-title">WELLNESS<br>AT THE<br>OFFICE.</h2>
+      </div>
+      <div>
+        <div class="location-badges">
+          <span class="badge badge-indoor">At Your Office</span>
+          <span class="badge badge-outdoor">Our Facilities</span>
+        </div>
+        <p class="ts-desc">Group training delivered directly to your company. Our FIT@Work program brings professional fitness coaching to your workplace — improving team wellbeing, boosting productivity, and building a healthier, happier workforce.</p>
+        <p class="ts-desc">Whether delivered on-site at your office or at our facilities in the European Quarter, FIT@Work is designed for teams of all sizes and fitness levels. We handle everything — the planning, the coaching, and the motivation.</p>
+        <div class="ts-perks">
+          <span class="ts-perk">Any Team Size</span>
+          <span class="ts-perk">Flexible Scheduling</span>
+          <span class="ts-perk">On-site or Facility</span>
+          <span class="ts-perk">Custom Programs</span>
+        </div>
+        <a href="index.html#contact" class="btn-primary">Get a Corporate Quote</a>
+      </div>
+    </div>
+
+    <div class="ts-features">
+      <div class="ts-feature">
+        <div class="ts-feature-num">01</div>
+        <div class="ts-feature-title">Expert Coaches</div>
+        <div class="ts-feature-desc">Certified coaches who adapt sessions to your team's fitness levels and goals. Safe, professional, motivating.</div>
+      </div>
+      <div class="ts-feature">
+        <div class="ts-feature-num">02</div>
+        <div class="ts-feature-title">Team Building</div>
+        <div class="ts-feature-desc">Shared physical challenges build real bonds between colleagues. The gym does what team-building retreats only promise.</div>
+      </div>
+      <div class="ts-feature">
+        <div class="ts-feature-num">03</div>
+        <div class="ts-feature-title">Proven Results</div>
+        <div class="ts-feature-desc">Regular exercise reduces sick days, improves focus, and increases energy. Healthy teams perform better — it's that simple.</div>
+      </div>
+      <div class="ts-feature">
+        <div class="ts-feature-num">04</div>
+        <div class="ts-feature-title">Fully Flexible</div>
+        <div class="ts-feature-desc">Morning, lunchtime, or after-work sessions — we work around your team's schedule, not the other way around.</div>
+      </div>
+    </div>
+
+    <div class="ts-cta">
+      <div class="ts-cta-text">Bring Carlito Sport<br>to your team.</div>
+      <div class="cta-btns">
+        <a href="index.html#contact" class="btn-primary">Contact Us</a>
+        <a href="tel:+32495315244" class="btn-secondary">Call Directly</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">CARLITO<span>.</span>SPORT</div>
+  <p class="footer-copy">&copy; 2024 Carlito Sport. Brussels, European Quarter.</p>
+  <ul class="footer-links">
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="free-trial.html">Free Trial</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+// CURSOR
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
+});
+function animateRing() {
+  rx += (mx - rx - 20) * 0.12;
+  ry += (my - ry - 20) * 0.12;
+  ring.style.transform = `translate(${rx}px, ${ry}px)`;
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+document.querySelectorAll('a, button, .type-card').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+});
+
+// NAVBAR
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// HAMBURGER
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// TABS
+function switchTab(tabId) {
+  document.querySelectorAll('.training-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tabId).classList.add('active');
+  document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+  window.scrollTo({ top: document.querySelector('.training-tabs-wrap').offsetTop - 80, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+});
+
+document.querySelectorAll('[data-switch]').forEach(card => {
+  card.addEventListener('click', e => {
+    e.preventDefault();
+    switchTab(card.dataset.switch);
+  });
+});
+
+// Check URL hash
+const hash = window.location.hash.replace('#','');
+if (['personal','small-group','group','fitwork'].includes(hash)) switchTab(hash);
+
+// REVEAL
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>
